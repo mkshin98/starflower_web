@@ -1,0 +1,164 @@
+@charset "EUC-KR";
+
+
+a:link    { color: blue;   text-decoration: none;}
+a:visited { color: light-blue; text-decoration: none;}
+a:hover   { color: blue;  text-decoration: underline;}
+
+.body_sf2020	{  background-color: #EAF5EA; 
+				   font-size:14px;
+} 
+/*		  	  font-weight:700;
+			  font-style:italic;
+			  font-family:tahoma; */
+
+/* 탭을 사용해 보자 */
+.tab { white-space: pre; }
+
+img.width100 {width:100%;}
+
+
+/* 전체적으로 60 들여쓰기하고, 두번째줄은 18 더 들여쓰기를 한다.*/
+td			{ line-height: 1.7em; } 
+
+table.border {
+    border: 1px solid gray;
+	border-collapse: collapse;
+    margin:      5px 15px 5px 30px;
+    padding:      3px 5px 3px 5px;		/* 이건 잘 안 먹는다 */
+    width: 90%;
+}
+
+td.border		{
+    border: 	1px solid gray;
+	padding:    3px 5px 3px 5px;
+	text-align: center;
+	line-height: 1.6em;
+}
+
+
+table.noborder {
+    border: none;
+    margin:      0px 15px 5px 30px;
+    padding:     0px  5px 3px  5px;		/* 이건 잘 안 먹는다 */
+    width: 90%;
+}
+
+table.noborder_nomargin {
+    border: none;
+    margin:      0px 0px 0px  0px;
+    padding:     0px 5px 0px  5px;		/* 이건 잘 안 먹는다 */
+    width: 90%;
+}
+
+td.noborder		{
+	padding:    3px 5px 3px 5px;
+	text-align: center;
+	line-height: 1.6em;
+}
+
+
+
+/* 출처: https://lee-mandu.tistory.com/394 [개발/일상_Mr.lee]*/
+
+
+ol			{ line-height: 1.9em; 
+              list-style-position: inside;
+		      text-indent: -18px;			/* 첫줄만 왼쪽으로 이동 */
+			  padding-left:18px;			/* 두번재 줄부터는 18 오늘쪽으로 이동 */              
+              margin-left: 30px;        }
+
+ol.nomargin	{ line-height: 1.9em; 
+              list-style-position: inside;
+		      text-indent: -18px;			/* 첫줄만 왼쪽으로 이동 */
+			  padding-left:18px;			/* 두번재 줄부터는 18 오늘쪽으로 이동 */              
+              margin-left: 00px;        }
+
+              
+ul.sf_std	{ line-height: 1.9em; 
+              list-style-position: inside;
+		      text-indent: -18px;			/* 첫줄만 왼쪽으로 이동 */
+			  padding-left:18px;			/* 두번재 줄부터는 18 오늘쪽으로 이동 */              
+              margin-left: 30px;        }
+
+ul.nomarker	{ /* type은 별도로 적어 준다. 탭 2개가 약 100px에 해당됨*/ 
+			  list-style: none;
+			  line-height: 1.9em; 
+              list-style-position: inside;
+		      text-indent: -40px;			/* 첫줄만 왼쪽으로 이동 */
+			  padding-left: 40px;			/* 두번재 줄부터는 18 오늘쪽으로 이동 */              
+              margin-left: 30px;        }
+
+              
+p			{ line-height: 1.9em; 
+			  margin:      10px 15px 15px  0px;
+              padding:     0px  0px 0px 30px; }  /*60*/
+              
+p.margin {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-right: 6px;
+    margin-left: 20px;
+}
+
+div.right_40percent {
+/*	display: float;*/
+	margin-left:  auto;
+	margin-right: auto;
+	width:  40%;
+	float: right;
+/*	background-color: yellow;*/
+}
+
+/* 가운데 정렬로 최대 500 pixel만 사용하도록 함 */
+.div_background {
+	display: block;
+	margin-left:  auto;
+	margin-right: auto;
+	width:     100%;
+	max-width: 500px;
+	background-color: rgb(FF, FF, FF);
+}
+
+.div_bg_fix700 {
+	display: block;
+	margin-left:  auto;
+	margin-right: auto;
+	width:     700px;
+	background-color: rgb(FF, FF, FF);
+}
+.div_bg_fix900 {
+	display: block;
+	margin-left:  auto;
+	margin-right: auto;
+	width:     900px;
+	background-color: rgb(FF, FF, FF);
+}
+
+
+.div_bg_max700 {
+	display: block;
+	margin-left:  auto;
+	margin-right: auto;
+	width:     100%;
+	max-width: 700px;
+	background-color: rgb(FF, FF, FF);
+}
+
+.div_bg_max900 {
+	display: block;
+	margin-left:  auto;
+	margin-right: auto;
+	width:     100%;
+	max-width: 900px;
+	background-color: rgb(FF, FF, FF);
+}
+
+.div_background_top {
+	display: block;
+	margin-left:  auto;
+	margin-right: auto;
+	width:     100%;
+	background-color: #E9FFC9;
+}
+

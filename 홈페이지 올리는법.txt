@@ -1,0 +1,14 @@
+1. 실행파일 이동. 
+2. ini 파일 삭제 후 실행해 보고, 다시 한 번 실행해 본다.
+3.  ini 파일 삭제
+4. 압축한다.  starflower2020.zip
+5. WebContent 통째로 starflower2에 올림
+6. sf_css, sf_download.html, starflower_2020.zip 항목을 starflower에 올림
+7. 다운로드해서 정상 실행되는지 확인
+
+iwinv.net  소운 4자리
+
+starflower.iwinv.net  FTP 4자리
+
+
+http://www.atlasoftheuniverse.com/universe.html
