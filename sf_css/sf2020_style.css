@@ -5,6 +5,20 @@ a:link    { color: blue;   text-decoration: none;}
 a:visited { color: light-blue; text-decoration: none;}
 a:hover   { color: blue;  text-decoration: underline;}
 
+/* 2023-10-30, 이미지 위에 글자쓰기 */
+.width100_image {
+	position: relative;
+	width: 100%;
+}
+.text_on_the_image {
+	position: absolute;
+	top: 86%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+	color: white;
+	align: left;
+}
+
 .body_sf2020	{  background-color: #EAF5EA; 
 				   font-size:14px;
 } 
@@ -29,9 +43,21 @@ table.border {
     width: 90%;
 }
 
+tr.border		{
+	border: 	1px solid gray;
+	padding:    0px 0px 0px 0px;
+	line-height: 1.6em;
+}
+
 td.border		{
-    border: 	1px solid gray;
+	border: 	1px solid gray;
 	padding:    3px 5px 3px 5px;
+	text-align: center;
+	line-height: 1.6em;
+}
+td.border_nopadding		{
+	border: 	1px solid gray;
+	padding:    0px 0px 0px 0px;
 	text-align: center;
 	line-height: 1.6em;
 }
@@ -45,10 +71,17 @@ table.noborder {
 }
 
 table.noborder_nomargin {
-    border: none;
-    margin:      0px 0px 0px  0px;
-    padding:     0px 5px 0px  5px;		/* 이건 잘 안 먹는다 */
-    width: 90%;
+	border: none;
+	margin:      0px 0px 0px  0px;
+	padding:     0px 5px 0px  5px;		/* 이건 잘 안 먹는다 */
+	width: 90%;
+}
+
+table.noborder_widh100 {
+	border: none;
+	margin:      0px 0px 0px  0px;
+	padding:     0px 5px 0px  5px;		/* 이건 잘 안 먹는다 */
+	width: 100%;
 }
 
 td.noborder		{
@@ -56,7 +89,17 @@ td.noborder		{
 	text-align: center;
 	line-height: 1.6em;
 }
+td.noborder_left {
+	padding:    3px 5px 3px 5px;
+	text-align: left;
+	line-height: 1.6em;
+}
 
+td.noborder_left_nopadding {
+	padding:    0px 5px 0px 5px;
+	text-align: left;
+	line-height: 1.6em;
+}
 
 
 /* 출처: https://lee-mandu.tistory.com/394 [개발/일상_Mr.lee]*/
@@ -80,6 +123,12 @@ ul.sf_std	{ line-height: 1.9em;
 		      text-indent: -18px;			/* 첫줄만 왼쪽으로 이동 */
 			  padding-left:18px;			/* 두번재 줄부터는 18 오늘쪽으로 이동 */              
               margin-left: 30px;        }
+
+ul.in_table	{ line-height: 1.7em;	/* 테이블 내에서는 왼쪽 여백을 줄 필요 없다 */
+	list-style-position: inside;
+	text-indent: -18px;			/* 첫줄만 왼쪽으로 이동 */
+	padding-left:18px;			/* 두번재 줄부터는 18 오늘쪽으로 이동 */
+	margin-left: 2px;        }
 
 ul.nomarker	{ /* type은 별도로 적어 준다. 탭 2개가 약 100px에 해당됨*/ 
 			  list-style: none;
@@ -146,6 +195,15 @@ div.right_40percent {
 }
 
 .div_bg_max900 {
+	display: block;
+	margin-left:  auto;
+	margin-right: auto;
+	width:     100%;
+	max-width: 900px;
+	background-color: rgb(FF, FF, FF);
+}
+
+.div_bg_max1080 {
 	display: block;
 	margin-left:  auto;
 	margin-right: auto;
