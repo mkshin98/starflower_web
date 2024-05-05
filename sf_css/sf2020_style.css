@@ -19,6 +19,15 @@ a:hover   { color: blue;  text-decoration: underline;}
 	align: left;
 }
 
+.text_on_the_image_left {
+	position: absolute;
+	top: 86%;
+	left: 10%;
+	transform: translate( -50%, -50% );
+	color: white;
+	align: left;
+}
+
 .body_sf2020	{  background-color: #EAF5EA; 
 				   font-size:14px;
 } 
