@@ -5,12 +5,34 @@ a:link    { color: blue;   text-decoration: none;}
 a:visited { color: light-blue; text-decoration: none;}
 a:hover   { color: blue;  text-decoration: underline;}
 
+/* div 가로 배치*/
+.div_parent {
+	border: 1px solid black;
+	margin: 1px;
+}
+.div_child_width50 {
+	float: left;
+	width: 50%;
+}
+
+
 /* 2023-10-30, 이미지 위에 글자쓰기 */
+.width50_image {
+	position: relative;
+	width: 50%;
+}
+.width50_image_center {
+	position: relative;
+	width: 50%;
+	text-align: center;
+}
+
 .width100_image {
 	position: relative;
 	width: 100%;
+	margin:      5px 5px 5px 30px;
 }
-.text_on_the_image {
+.text_on_the_image_center {
 	position: absolute;
 	top: 86%;
 	left: 50%;
@@ -28,9 +50,21 @@ a:hover   { color: blue;  text-decoration: underline;}
 	align: left;
 }
 
-.body_sf2020	{  background-color: #EAF5EA; 
-				   font-size:14px;
-} 
+.text_on_the_image_left25 {
+	position: absolute;
+	top: 86%;
+	left: 30%;
+	transform: translate( -50%, -50% );
+	color: white;
+	align: left;
+}
+
+.body_sf2020	{  background-color: #EAF5EA;
+	font-size:14px;
+}
+.body_sf2020_white	{  background-color: #FFFFFF;
+	font-size:14px;
+}
 /*		  	  font-weight:700;
 			  font-style:italic;
 			  font-family:tahoma; */
@@ -39,17 +73,20 @@ a:hover   { color: blue;  text-decoration: underline;}
 .tab { white-space: pre; }
 
 img.width100 {width:100%;}
+img.width80 {width:80%;
+	display: block;
+	margin: 0 auto; }
 
 
 /* 전체적으로 60 들여쓰기하고, 두번째줄은 18 더 들여쓰기를 한다.*/
-td			{ line-height: 1.7em; } 
+td			{ line-height: 1.7em; }
 
 table.border {
-    border: 1px solid gray;
+	border: 1px solid gray;
 	border-collapse: collapse;
-    margin:      5px 15px 5px 30px;
-    padding:      3px 5px 3px 5px;		/* 이건 잘 안 먹는다 */
-    width: 90%;
+	margin:      5px 15px 5px 30px;
+	padding:      3px 5px 3px 5px;		/* 이건 잘 안 먹는다 */
+	width: 90%;
 }
 
 tr.border		{
@@ -63,6 +100,33 @@ td.border		{
 	padding:    3px 5px 3px 5px;
 	text-align: center;
 	line-height: 1.6em;
+}
+td.border_left		{
+	border: 	1px solid gray;
+	padding:    3px 5px 3px 5px;
+	text-align: left;
+	line-height: 1.6em;
+}
+td.border_gray		{
+	border: 	1px solid gray;
+	padding:    3px 5px 3px 5px;
+	text-align: center;
+	line-height: 1.6em;
+	background-color:rgba(192, 192, 192);
+}
+td.border_light_gray		{
+	border: 	1px solid gray;
+	padding:    3px 5px 3px 5px;
+	text-align: center;
+	line-height: 1.6em;
+	background-color:rgba(224, 224, 224);
+}
+td.border_light_yellow		{
+	border: 	1px solid gray;
+	padding:    3px 5px 3px 5px;
+	text-align: center;
+	line-height: 1.6em;
+	background-color: rgba(255, 242, 204);
 }
 td.border_nopadding		{
 	border: 	1px solid gray;
@@ -78,6 +142,16 @@ table.noborder {
     padding:     0px  5px 3px  5px;		/* 이건 잘 안 먹는다 */
     width: 90%;
 }
+
+/* 2024-08-16, 왼쪽 마진을 30을 줘서, 우측 정렬처럼 만든다. 그래서 95% 이름을 사용함. */
+table.noborder_95 {
+	border: none;
+	margin:      0px 5px 5px 30px;
+	padding:     0px  5px 3px  5px;		/* 이건 잘 안 먹는다 */
+	align: right;
+	width: 100%;
+}
+
 
 table.noborder_nomargin {
 	border: none;
@@ -151,12 +225,20 @@ ul.nomarker	{ /* type은 별도로 적어 준다. 탭 2개가 약 100px에 해당됨*/
 p			{ line-height: 1.9em; 
 			  margin:      10px 15px 15px  0px;
               padding:     0px  0px 0px 30px; }  /*60*/
-              
+
 p.margin {
-    margin-top: 6px;
-    margin-bottom: 6px;
-    margin-right: 6px;
-    margin-left: 20px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	margin-right: 6px;
+	margin-left: 20px;
+}
+
+p.deepsky_list {
+	font-family: "Courier New";
+	margin-top: 6px;
+	margin-bottom: 6px;
+	margin-right: 6px;
+	margin-left: 10px;
 }
 
 div.right_40percent {
