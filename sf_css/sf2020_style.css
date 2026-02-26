@@ -5,6 +5,43 @@ a:link    { color: blue;   text-decoration: none;}
 a:visited { color: light-blue; text-decoration: none;}
 a:hover   { color: blue;  text-decoration: underline;}
 
+.blue-bold-text {
+	color: blue;
+	font-weight: bold;
+}
+
+.red-bold-text {
+	color: #FE2E64;
+	font-weight: bold;
+}
+
+
+/* 기본 스타일: 스마트폰처럼 화면이 작을 때는 세로로 쌓이게! */
+.flex-image-container {
+	display: flex; /* Flexbox를 사용해서 아이템들을 정렬할 거야 */
+	flex-direction: column; /* 기본 방향은 '세로'로! (위아래) */
+	align-items: center; /* 그림들을 가운데로 정렬 */
+	gap: 10px; /* 그림들 사이에 10px 간격 주기 */
+}
+
+.flex-image-container img {
+	/* 그림 크기 조절 (선택 사항) */
+	max-width: 100%; /* 부모 요소(image-container) 너비의 100%를 넘지 않게 */
+	height: auto; /* 가로 비율에 맞춰서 높이 자동 조절 */
+}
+
+/* PC처럼 화면이 일정 크기 이상일 때는 가로로 배열되게! */
+/* @media (min-width: 768px)는 "화면 너비가 768px 이상일 때"라는 뜻이야! */
+@media (min-width: 768px) {
+	.flex-image-container {
+		flex-direction: row; /* 방향을 '가로'로 바꿔줘! (왼쪽 오른쪽) */
+		justify-content: center; /* 가로 방향으로 가운데 정렬 */
+		gap: 20px; /* PC에서는 그림들 사이 간격을 좀 더 넓게 */
+	}
+}
+
+
+
 /* div 가로 배치*/
 .div_parent {
 	border: 1px solid black;
@@ -21,13 +58,28 @@ a:hover   { color: blue;  text-decoration: underline;}
 	position: relative;
 	width: 50%;
 }
-.width50_image_center {
+
+.width70_image_center {
 	position: relative;
-	width: 50%;
+	width: 70%;
 	text-align: center;
+	margin: 0 auto;
 }
 
+ .div_width49 {
+	 position: relative;
+	 width: 49%;
+	 margin:  1px 1px 1px 1px;
+
+ }
+
 .width100_image {
+	position: relative;
+	width: 100%;
+	margin:      5px 5px 5px 5px;
+}
+
+.width100_left_margin_image {
 	position: relative;
 	width: 100%;
 	margin:      5px 5px 5px 30px;
@@ -72,8 +124,15 @@ a:hover   { color: blue;  text-decoration: underline;}
 /* 탭을 사용해 보자 */
 .tab { white-space: pre; }
 
-img.width100 {width:100%;}
+video.width100 {width:100%;}
+
+img.width100 {width:100%;
+	display: block;
+	margin: 0 auto; }
 img.width80 {width:80%;
+	display: block;
+	margin: 0 auto; }
+img.width70 {width:70%;
 	display: block;
 	margin: 0 auto; }
 
@@ -84,7 +143,7 @@ td			{ line-height: 1.7em; }
 table.border {
 	border: 1px solid gray;
 	border-collapse: collapse;
-	margin:      5px 15px 5px 30px;
+	margin:      5px 15px 5px 25px;
 	padding:      3px 5px 3px 5px;		/* 이건 잘 안 먹는다 */
 	width: 90%;
 }
@@ -101,6 +160,8 @@ td.border		{
 	text-align: center;
 	line-height: 1.6em;
 }
+
+
 td.border_left		{
 	border: 	1px solid gray;
 	padding:    3px 5px 3px 5px;
@@ -136,18 +197,34 @@ td.border_nopadding		{
 }
 
 
+table.noborder_maxwidth500 {
+	border: none;
+	margin:      0px 1px 5px 30px;
+	padding:     0px  1px 3px  1px;		/* 이건 잘 안 먹는다 */
+	max-width: 500px;
+	align-self: center;
+}
+
+table.noborder_maxwidth600 {
+	border: none;
+	margin:      0px 1px 5px 30px;
+	padding:     0px  1px 3px  1px;		/* 이건 잘 안 먹는다 */
+	max-width: 600px;
+	align-self: center;
+}
+
 table.noborder {
     border: none;
-    margin:      0px 15px 5px 30px;
-    padding:     0px  5px 3px  5px;		/* 이건 잘 안 먹는다 */
-    width: 90%;
+    margin:      0px 1px 5px 30px;
+    padding:     0px  1px 3px  1px;		/* 이건 잘 안 먹는다 */
+    width: 95%;
 }
 
 /* 2024-08-16, 왼쪽 마진을 30을 줘서, 우측 정렬처럼 만든다. 그래서 95% 이름을 사용함. */
 table.noborder_95 {
 	border: none;
-	margin:      0px 5px 5px 30px;
-	padding:     0px  5px 3px  5px;		/* 이건 잘 안 먹는다 */
+	margin:      0px 5px 5px 25px;
+	padding:     0px  5px 3px  0px;		/* 이건 잘 안 먹는다 */
 	align: right;
 	width: 100%;
 }
@@ -169,6 +246,16 @@ table.noborder_widh100 {
 
 td.noborder		{
 	padding:    3px 5px 3px 5px;
+	text-align: center;
+	line-height: 1.6em;
+}
+td.noborder_picture	{	// 2025-08. 아래 마진을 없앤다
+padding:    3px 5px 0px 5px;
+	text-align: center;
+	line-height: 1.6em;
+}
+td.noborder_text	{	// 2025-08. 위 마진을 없앤다
+padding:    0px 5px 3px 5px;
 	text-align: center;
 	line-height: 1.6em;
 }
@@ -206,6 +293,11 @@ ul.sf_std	{ line-height: 1.9em;
 		      text-indent: -18px;			/* 첫줄만 왼쪽으로 이동 */
 			  padding-left:18px;			/* 두번재 줄부터는 18 오늘쪽으로 이동 */              
               margin-left: 30px;        }
+
+ul.sf_std_second {
+	margin-left: 10px;   /* 기본은 20~40px, 더 줄이기 */
+	padding-left: 10px;
+}
 
 ul.in_table	{ line-height: 1.7em;	/* 테이블 내에서는 왼쪽 여백을 줄 필요 없다 */
 	list-style-position: inside;
@@ -303,6 +395,16 @@ div.right_40percent {
 	background-color: rgb(FF, FF, FF);
 }
 
+.div_bg_max1920 {
+	display: block;
+	margin-left:  auto;
+	margin-right: auto;
+	width:     100%;
+	max-width: 1920px;
+	background-color: rgb(FF, FF, FF);
+}
+
+
 .div_background_top {
 	display: block;
 	margin-left:  auto;
@@ -311,3 +413,28 @@ div.right_40percent {
 	background-color: #E9FFC9;
 }
 
+/* 2024-12-20, 세로 비디오를 잘 보이도록 고민 */
+.video-container {
+	position: relative;
+	height: 100%;
+	height: 52vw;
+	overflow: hidden;
+}
+
+video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	transform: translate(-50%, -50%);
+}
+
+/* 모바일에서 최소 높이 적용 */
+@media (max-width: 768px) {
+	.video-container {
+		min-height: 400px; /* 최소 높이를 400px로 설정 */
+		height: 100vw;
+	}
+}

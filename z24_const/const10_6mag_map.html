@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYLQS1BKV9"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-PYLQS1BKV9');
+	</script>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-MK63WGMZ');</script>
+	<!-- End Google Tag Manager -->
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>별자리 성도 다운로드 및 보기</title>
+
+	<link rel="stylesheet" href="../sf_css/sf2020_style.css">
+	<script src="../sf_css/sf2020_common.v2.js"></script>
+
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		.constellation {
+			margin: 10px;
+			text-align: center;
+		}
+		img {
+			width: 100px; /* 이미지 크기 조정 */
+			height: auto;
+		}
+		.column {
+			flex: 1 1 25%; /* 4개의 컬럼 */
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body class="body_sf2020" >
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MK63WGMZ"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="div_bg_max900">
+<a href="../index.html">별바라기 홈</a> > <a href="index24_const.html">별바라기 별자리 성도</a><br>
+
+<h2 align="left">별자리 성도 다운로드 및 보기</h2>
+
+	<ul class="sf_std">
+		<li>전체 별자리 파일 다운로드. (2025년 2월 20일):
+			<a href="https://sfdownload.iwinv.net/z90_images/i24_constellation/i24_constellation.zip" target="_blank">i24_constellation.zip</a>
+			(약 20 MBytes)
+		</li>
+		<li>별자리 이름 검은색 버전 별자리 파일 다운로드:
+			<a href="https://sfdownload.iwinv.net/z90_images/i24_constellation/i24_constellation_black.zip" target="_blank">i24_constellation_balck.zip</a>
+			(약 20 MBytes)
+		</li>
+	</ul>
+
+
+	<div id="constellation-container" class="div_bg_max900"></div>
+
+	<script>
+
+//		const c_ConstName_HSort = [		sf2020_common.js에 정의
+//		const c_ConstName_ESort = [
+
+		const container = document.getElementById('constellation-container');
+
+		for (let i = 0; i < c_ConstName_HSort.length; i += 4) {
+			const row = document.createElement('tr');
+
+			for (let j = 0; j < 4; j++) {
+				if (i + j < c_ConstName_HSort.length) {
+					const name = c_ConstName_HSort[i + j];
+					const title = c_ConstName_HSort[i + j] +'<br>' + c_ConstEName_HSort[i+j];
+					const cell = document.createElement('td');
+
+					// 가운데 맞춤 스타일 추가
+					cell.style.textAlign     = 'center'; // 텍스트 가운데 정렬
+					cell.style.verticalAlign = 'middle'; // 수직 가운데 정렬
+
+					let image_path = '../z90_images/i24_constellation/별바라기_성도_' + name + '자리.jpg';
+					let small_image_path = '../z90_images/i24_constellation/small/별바라기_성도_' + name + '자리_small.JPG';
+					// 파일 존재 여부 체크
+//					if(c_ConstImage[i + j] == 0)
+//						image_path = '../z90_images/i24_constellation/00.green_blank.png';
+
+					// 이미지 경로가 결정된 후에 셀의 innerHTML을 설정
+					cell.innerHTML = `
+						<img src="${small_image_path}"
+						class="pic1"
+						onclick="simpleLightbox('${image_path}', 5000);">
+						<br>${title}
+					`;
+					row.appendChild(cell);
+				} else {
+					const cell = document.createElement('td');
+					cell.style.textAlign = 'center'; // 빈 셀도 가운데 정렬
+					cell.style.verticalAlign = 'middle'; // 빈 셀도 수직 가운데 정렬
+					row.appendChild(cell); // 빈 셀 추가
+				}
+			}
+			container.appendChild(row);
+		}
+	</script>
+
+<hr>
+    <p align="center"><a href="https://starflower.info">별바라기 홈</a>&emsp;최초 작성: 2024년 11월 17일
+    </p>
+
+
+</div>
+</body>
+</html>

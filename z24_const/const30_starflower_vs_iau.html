@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYLQS1BKV9"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-PYLQS1BKV9');
+	</script>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-MK63WGMZ');</script>
+	<!-- End Google Tag Manager -->
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>성도 비교: 별바라기 vs IAU</title>
+
+	<link rel="stylesheet" href="../sf_css/sf2020_style.css">
+	<script src="../sf_css/sf2020_common.v2.js"></script>
+
+	<style>
+		.constellation {
+			display: grid;
+			grid-template-columns: repeat(18, 1fr);
+			gap: 10px;
+			margin-bottom: 20px;
+		}
+		.constellation div {
+			padding: 10px;
+			background-color: #f0f0f0;
+			text-align: center;
+			cursor: pointer;
+			border: 1px solid #ccc;
+		}
+		.images {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		}
+		.images table {
+			width: 100%;
+		}
+		.images img {
+			width: 100%;
+			height: auto;
+		}
+	</style>
+</head>
+<body class="body_sf2020" >
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MK63WGMZ"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="div_bg_max1920">
+<a href="../index.html">별바라기 홈</a> > <a href="index24_const.html">별자리 성도</a><br>
+
+<h2 align="left">성도 비교: 별바라기 vs IAU</h2>
+
+<p>
+	PC에서 보는 것이 편하다.<br>
+	별바라기 성도는 <a href="https://www.iau.org/public/themes/constellations/" target="_blank">국제천문연맹 (IAU)에서 작성한 성도</a>와
+	유사하게 작성했다. 둘을 비교해 보자.
+</p>
+
+	<div class="constellation" id="constellationList"></div>
+	<div class="images" id="imageContainer"></div>
+
+	<script>
+//		const c_ConstName_HSort = [			 sf2020_common.js에 정의
+//		const c_ConstNameAbbr_HSort = [
+
+		const constellationList = document.getElementById('constellationList');
+		const imageContainer = document.getElementById('imageContainer');
+
+		// 별자리 이름을 8개씩 나열
+		c_ConstName_HSort.forEach((name, index) => {
+			const div = document.createElement('div');
+			div.textContent = name;
+			div.onclick = () => showImages(index);
+			constellationList.appendChild(div);
+		});
+
+			function showImages(index) {
+				imageContainer.innerHTML = `
+            <table>
+                <tr>
+                    <td width="50%">
+                        <img src="../z90_images/i24_constellation/별바라기_성도_${c_ConstName_HSort[index]}자리.jpg"
+                         	 alt="${c_ConstName_HSort[index]}" class="width100">
+                    </td>
+                    <td width="50%">
+                        <img src="../z90_images/i24_constellation/IAU_constellation/${c_ConstNameAbbr_HSort[index]}.gif"
+                         	 alt="${c_ConstNameAbbr_HSort[index]}" class="width100">
+                    </td>
+                </tr>
+            </table>
+        `;
+
+		}
+	</script>
+
+<!--
+	<table>
+		<tr>
+			<td width="50%">
+				<img src="../z90_images/i24_constellation/별바라기_성도_양자리.jpg"
+					 class="width100">
+			</td>
+			<td>
+				<img src="../z90_images/i24_constellation/IAU_constellation/ari.gif"
+					 class="width100">
+			</td>
+		</tr>
+	</table>
+-->
+
+	<h3>참고: 추가 작업할 것</h3>
+	<ul class="sf_std">
+		<li>IAU 북쪽왕관: v 1, 2가 바뀌었다.</li>
+		<li>IAU 목동: nu 첨자 1, 2가 바뀌었다.</li>
+		<li>공작: 아래쪽 적경 표시 글자 삭제</li>
+		<li>궁수: 남두육성 글자쓰기. chi 1 근처 [Deleted] 표시된 별 처리. 지워야 하나? 황도 글자를 좌우 구분해서 쓸 수 있게 하자.</li>
+		<li>극락조: 아래쪽 적경 표시 글자 삭제</li>
+		<li>날치: 용골 별자리 연결선 지우기</li>
+		<li>뱀: 머리 꼬리 한 파일로. 작업이 좀 귀찮다..., 타우 5~8 추가, </li>
+		<li>큰물뱀: 성도 작성 시 글자 크기 조정 필요: 별자리 이름 10 폰트, 바이어문자 9 폰트, 동서남북 9</li>
+		<li>큰곰: 북두칠성 글자 쓰기. M40 추가: 일단 산개성단 표시로 정함.</li>
+		<li>첨자 마이너스 값: 화면에 쓰는 로직 소스 정리 필요. 당장은 문제 안됨</li>
+		<li>별 첨자 처리: wcass.cpp 413</li>
+		<li>버그: .sky 파일 저장 후 다시 읽을 때, 글자 크기가 원복됨 --> 성도의 시야에 따라 크기를 지정하자. 별 크기도 보기 좋게 지정...</li>
+	</ul>
+
+	<h3>참고: 수작업 목록</h3>
+	<ul class="sf_std">
+		<li></li>
+		<li>컴퍼스 별자리 모양선 추가해야 함 </li>
+		<li>소스에서 볼것: 궁수자리 베타2는 정보는 있는데, 화면에 표시 안됨. 2676-c1, 2656-b2</li>
+		<li>현미경: 별자리 모양선 수정. 위쪽이 접안부, 아래쪽 별이 많은 곳이 대상을 놓는 곳</li>
+		<li>전갈: 베타 2 첨자 지움</li>
+		<li>큰부리새: 베타 첨자 지움</li>
+		<li>별자리 모양선, 황도, 은하의 적도를 더 굵게 하여 성도 다시 작성</li>
+		<li>아르고: 별 크기 계수: 0.0011 (완료)</li>
+		<li>거문고: 제타 첨자 지움</li>
+		<li>격자: 제타 2 첨자 지움</li>
+		<li>고래: 별 바이어 파이 3, 4 xi 1, 2</li>
+		<li>공작: mu 1, 2 첨자</li>
+		<li>남십자가: 별 바이어 알파 첨자 지움</li>
+		<li>마차부: 별 바이어 y의 첨자들</li>
+		<li>백조: 별 바이어 파이 첨자 1, 2, 파이 1 좌측으로 이동</li>
+		<li>북쪽왕관: 제타 첨자 지우기, v 1, 2 쓰기, IAU: v 1, 2가 바뀌었다.</li>
+		<li>비둘기: 별 바이어 v 1, 2</li>
+		<li>사냥개: 화면에서 알파 옆에 사선은 무엇인지 모르겠다. 나중에 소스 확인. 아마도 불필요한 문자가 있는 듯.</li>
+		<li>시계: 감마 추가</li>
+		<li>센타우루스: 알파 1 지우기, IAU의 모양선이 더 이해하기 쉽다.</li>
+		<li>에리다누스: 타우 3~9, roh 3, 세타 첨자 지우기</li>
+		<li>오리온: 파이 1~6, 세타 1 지우기</li>
+		<li>용골: 에타별 지시선</li>
+		<li>인디언: k 추가</li>
+		<li>직각자: z 추가</li>
+		<li>천칭: 제타 1, 2, 알파 첨자 지움</li>
+		<li>큰개: 별 바이어 v, 제타 첨자들</li>
+		<li>팔분의: 감마, 파이, 유? 첨자</li>
+		<li>헤르쿨레스: 알파 첨자 지움</li>
+		<li>황새치: 파이 첨자 1, 2</li>
+		<li>황소: 세타, 로 첨자 지우고, 델타 2, 3 추가</li>
+	</ul>
+
+	<hr>
+    <p align="center"><a href="https://starflower.info">별바라기 홈</a>&emsp;최초 작성: 2024년 11월 17일
+    </p>
+
+
+</div>
+</body>
+</html>
