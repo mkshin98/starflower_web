@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYLQS1BKV9"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-PYLQS1BKV9');
+	</script>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-MK63WGMZ');</script>
+	<!-- End Google Tag Manager -->
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>오늘밤 별하늘 전체 목록</title>
+
+	<link rel="stylesheet" href="../sf_css/sf2020_style.css">
+</head>
+<body class="body_sf2020" >
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MK63WGMZ"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="div_bg_max700">
+
+	<h2 align="left">오늘밤 별하늘 전체 목록</h2>
+
+	<!-- 링크들이 생성되어 들어갈 컨테이너 -->
+	<div id="list-container"></div>
+
+	<script>
+		// 1. 직접 작성하실 연월 배열 (YYYY-MM 형식)
+		// ※ 정렬되어 있지 않아도 코드가 알아서 연도별/월별로 정렬합니다.
+		const dateArray = ["2026-05", "2026-06", "2026-10",];
+
+		// 2. 파일명 규칙을 만들어주는 함수 (정규식/포맷에 맞게 수정하세요)
+		// 예: "2026-01" -> "report_2026_01.pdf" 형태로 변환한다고 가정
+		function createFileName(dateStr) {
+			return `starlit_${dateStr}.html`;
+		}
+
+		// --- 여기서부터는 자동으로 처리되는 로직입니다 ---
+
+		// 배열을 오름차순(과거 -> 최신)으로 정렬
+		dateArray.sort();
+
+		const container = document.getElementById('list-container');
+		let currentYear = "";
+		let currentUl = null;
+
+		dateArray.forEach(dateStr => {
+			const [year, month] = dateStr.split('-');
+			const fileName = createFileName(dateStr);
+
+			// 새로운 연도가 나타나면 h3 태그와 새로운 ul 태그 생성
+			if (year !== currentYear) {
+				currentYear = year;
+
+				const h3 = document.createElement('h3');
+				h3.textContent = `${year}년`;
+				container.appendChild(h3);
+
+				currentUl = document.createElement('ul');
+				container.appendChild(currentUl);
+			}
+
+			// 각 월별 파일 링크(a 태그) 생성
+			const li = document.createElement('li');
+			const a = document.createElement('a');
+
+			a.href = `./${fileName}`;       // 같은 폴더 안의 파일 상대 경로
+			a.textContent = `${month}월의 별하늘`;
+			a.target = "_blank";            // 새 탭에서 열기
+
+			li.appendChild(a);
+			currentUl.appendChild(li);
+		});
+	</script>
+<hr>
+    <p align="center"><a href="https://starflower.info">별바라기 홈</a>&emsp;최종 변경: 2024년 05월 18일
+    </p>
+
+
+</div>
+</body>
+</html>

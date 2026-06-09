@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>멋진 NGC 100선</title>
+	<title>관측! 멋진 NGC대상 100선!</title>
 
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -15,6 +15,47 @@
 
 	<link rel="stylesheet" href="../sf_css/sf2020_style.css">
 	<script src="../sf_css/sf2020_common.js"></script>
+
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			max-width: 900px;
+			font-family: sans-serif;
+			margin: 8px 0 20px 0; /* <hr> 태그와의 상단 간격을 좁힘 */
+		}
+		th, td {
+			border: 1px solid #ddd;
+			padding: 6px 10px;    /* 글자 크기에 맞춰 패딩 최적화 */
+			font-size: 12px;       /* 표 전체 글자 크기 축소 */
+		}
+		th {
+			background-color: #f4f4f4;
+			color: #333;
+			text-align: center;
+		}
+		tr:hover {
+			background-color: #f1f1f1;
+		}
+		/* 우측 맞춤 (번호, NGC) */
+		.align-right {
+			text-align: right;
+		}
+		/* 가운데 맞춤 (종류, 별자리) */
+		.align-center {
+			text-align: center;
+		}
+		/* 소수점 맞춤을 위한 고정폭 글꼴 및 우측 정렬 (등급, 크기) */
+		.align-decimal {
+			text-align: right;
+			font-family: 'Courier New', Courier, monospace;
+		}
+		/* 설명 컬럼 (좌측 정렬) */
+		.align-left {
+			text-align: left;
+		}
+	</style>
+
 </head>
 
 <body class="body_sf2020" >
@@ -28,129 +69,975 @@
 	<a href="../index.html">별바라기 홈</a> > <a href="help_00_index.html">도움말</a><br>
 
 
-<h2>멋진 NGC 100선</h2>
-
+<h2>관측! 멋진 NGC대상 100선!</h2>
+<p style="text-align: right;">조상호 서울천문동호회<br>
+	「월간 하늘」 1995년 2월호
+</p>
 <p>
-	NGC목록에는 약 7840개의 성운 성단 은하들이 들어 있으며 메시에 목록에 있는 대부분의 천체들도 여기에 포함되어 있다. (단 M24,M40,M45,M102 제외)
-	이 목록은 1888년 존 드라이어에 의해 만들어 졌으며 ‘성운과 성단의 일반적인 새목록(NGC: New General Catalogue)’이라는 의미이다. 보통 성도에서는 NGC라는 명기없이 숫자만 통상적으로 표기하고 있다. 이 중에서 아마추어 관측가들에게 관측을 추천하는 멋진 NGC 100선을 선정해 보았다.
+	아마추어 천문가들에게 가장 많은 흥미를 유발하는 분야가 성운·성단·은하의 관측이다.
+	처음 아무 것도 모를 때에는 사진에서 볼 수 있는 화려한 모습을 보려고 성운·성단·은하의 관측에 관심을 기울이지만, 눈으로 볼 수 있는 한계를 알게된 다음에도 그 흥미가 변함없는 경우도 많다. 실제 살아있는 별의 빛을 본다는 것! 또, 무한의 대상이 널려 있다는 것이 아마추어들을 흥분되게 만든다.
+</p>
+	<h4>메시에 목록</h4>
+	<p>
+	처음에는 오리온 대성운이나 안드로메다 은하 등의 유명한 대상들을 망원경으로 접하게 되지만 곧 메시에 목록이라는 훌륭한 대상 리스트가 있다는 사실을 알게 된다. 아마 성운·성단 은하를 관측하면서 메시에 목록이 무엇인지 모르는 사람은 없을 것이다. 이미 오래전에 메시에라는 열정적인 관측가가 만들어 놓은 110개의 대상은 성운·성단·은하를 관측하는 아마추어들에게 좋은 지표가 된다. 때문에 성운·성단·은하를 즐겨보는 아마추어들은 메시에 목록에서 살고 있다고 해도 과언이 아니다.
 </p><p>
-	이 대상들은 조상호(서울천문동호회, 국방과학 연구소)님이 지금까지 관측한 NGC 대상 중 눈으로 관측하기에 근사하고 멋진 것들만 뽑은 것이다. 물론 모든 NGC 대상을 관측하고 목록을 작성한 것이 아니므로 멋진 NGC 대상 100선은 완벽한 것은 아니다. 그러나 큰 어긋남은 없을 것이다.
+	메시에 목록에 나타나는 대상은 아마추어가 갖고 있는 아무리 작은 구경이라도 — 설사 60mm라도 — 전 대상을 관측할 수 있다. 그러므로 우리에게 다가오는 친근감은 더 크다. 우리나라에서는 메시에 목록을 정복하면 베테랑 아마추어로 통한다. 아직 아마추어 천문의 역사가 매우 짧고 그 수도 적기 때문인데 사실은 메시에 목록을 정복했다고 하면 이제서야 성운·성단 관측의 참맛에 입문한 것에 불과하다.
 </p><p>
-	NGC 대상이라는 것이 워낙 광범위하기 때문에 관측하는 망원경의 크기에 따라 그 느낌도 상당히 달라진다. 이 NGC 100선은 아마추어들이 통상적으로 성운, 성단을 관측할 때 가장 많이 쓰는 8인치 망원경 기준이라고 생각하면 된다. 아마 6인치 정도면 여기의 모든 대상을 관측하 수 있으리라 생각하지만 그 중 몇몇 대상은 어두워서 그 감흥이 떨어지는 것이 있을 것이다.
+	메시에 목록 110개를 전부 정복하기 위해서는 부지런한 관측자라도 통상 2년은 걸리므로 이 기간 동안 성운·성단 관측의 기본이라 할 성운·성단을 보는 눈도 길러지고, 관측의 기본 테크닉도 생기며, 대상이 어디에 있더라도 성도 한 장만 있으면 찾아갈 수 있는 능력도 생성된다.
 </p><p>
-	100개의 대상을 선별함에 있어 단순히 멋지게 보이는 것보다는 다른 요인들도 많이 작용하였다. 예를 들면 그 위치가 특이하여 관측하기에 색다른 맛이 있다든지, 주변에 다른 대상들이 없어서 선정된 것, 또 여러 종류를 고르게 분포 시키기 위해 들어간 것 등이 있다.
+	그럼 메시에 대상을 정복한 다음에는 어디로 가게 될까? 성운·성단 관측의 참맛을 알게 되는 이 시기에 아마추어들에게는 무한의 대상이 숨쉬고 있는 바다가 가로놓여 있다. 바로 NGC 대상이 그것이다.
+</p>
+	<h4>NGC 목록</h4>
+	<p>
+	메시에 목록 다음에 NGC 목록이 있음을 알게 된 아마추어는 드디어 NGC 정복이라는 새로운 도전을 시작하게 된다. 물론 메시에도 대부분이 NGC에 소속되어 있으므로 별도로 구분하는 것이 무의미하지만 여기서의 NGC 대상은 메시에 목록에 포함되어 있는 대상은 제외한 것을 의미한다.
 </p><p>
-	이 대상들을 관측해 나가다 보면 여러분들은 메시에 대상과는 또 다른 NGC 대상들의 멋을 동시에 느끼게 되리라 생각한다. 또, 여기에 나열된 NGC 대상들을 모두 관측한다면 여러분들도 성운, 성단, 은하 관측의 베테랑이 될 것이라 확신한다.
+	그러나 그 도전은 곧 벽에 부딪친다. 메시에 목록의 경우에는 망원경만 제 위치에 들이대면 눈에 보이지만 NGC가 되면 그리 간단하지 않다. 제대로 겨누었어도 보이지 않는 경우가 허다하다. 곧 NGC가 생각보다 어렵다는 사실을 뼈저리게 느끼게 되는 것이다.
 </p><p>
-	목록은 부록을 참조하고 기타 자세한 내용은 월간 하늘 1995년 2월 호를 참조하기 바란다.
+	NGC 대상은 19세기 말부터 20세기 초에 걸쳐 그때까지 발견되었던 별이 아닌 성운형 천체를 모두 모아둔 것으로 'New General Catalogue'의 약칭이다. 여기에는 모두 7800개의 대상이 수록되어 있다. 그후 망원경이 대형화되고 천체사진기술이 발전하면서 기존 NGC 목록 중 성운형 천체가 존재하지 않는 것과 두 개 이상의 천체가 중복되어 번호가 부여된 것 등 여러 오차가 있어 1975년경에 이 NGC 목록을 새로이 수정하여 확정하였다 (이 NGC를 RNGC(Revised NGC)라 부르기도 한다). 이 NGC 목록에는 우리들이 통상적으로 이야기하게 되는 거의 모든 성운·성단·은하가 망라되어 있다고 보아도 무방하다. 그만큼 많은 대상들이 포함되어 있다.
+</p>
+	<h4>NGC 목록의 관측을 시작하려면</h4>
+	<p>
+	 메시에 대상을 졸업하고 NGC 대상을 시작하려는 아마추어들은 대상의 선별작업부터 시작하게 된다. 아무 대상이나 다 보이는 것이 아니기 때문에 NGC 카탈로그나 성운·성단 관계 서적을 보고 그중 밝고 보일만한 것들을 뽑아내게 된다. 필자도 아주 오래전 이런 작업을 해보았었고, 성운·성단을 좀 보았다고 하는 아마추어들은 대부분 이런 시기를 거쳐 갔다.
+</p><p>
+	이 무렵부터 NGC와의 피말리는 싸움이 시작된다. 밝은 대상은 거의가 메시에 목록 소속이므로 NGC 대상의 선별 작업은 좀더 머리를 굴려야 한다. 단순히 성도를 보고 커 보인다 싶은 대상을 선택하는 것은 성공보다는 실패의 확률이 더 크다.
+</p><p>
+	나의 경험으로는 초기의 NGC 선별작업은 보통 두 가지 방향이 된다. 그 첫번째가 남쪽하늘의 대상을 선택하는 것이다. 고도가 낮아 남쪽지평선 낮게 깔리는 대상 중에는 메시에 목록에 소속될 만큼 밝으면서도 메시에 목록이 아닌 것들이 다소 있기 때문이다. 이런 대상들은 메시에 목록을 살펴보는 것과 비슷한 조건으로도 관측 가능하다.
+</p><p>
+	또 하나는 행성상 성운으로 방향을 잡는 것이다. 행성상 성운 중에는 매우 밝지만 단지 시직경이 작다는 이유만으로 메시에 대상이 아닌 것들이 많다. 이런 대상들은 좀더 높은 배율로 찬찬히 살펴보면 색다른 느낌으로 흥미있게 관측할 수 있다.
+</p><p>
+	물론 NGC 대상 중에도 이중성단처럼 너무나 밝은 대상들이 있다. 그러나 산개성단들은 흔하기 때문에 그 감동이 떨어진다. 따라서 초기에는 색다른 대상을 찾게 되다보니 이런 현상이 벌어지는 것이다.
+</p>
+	<h4>멋진 NGC 대상 100선!</h4>
+	<p>
+	 여기에 가장 멋진 NGC 대상 100선을 소개한다. 이 대상들은 필자가 지금까지 관측한 NGC 대상 중 눈으로 관측하기에 그럴싸하고 멋진 것들만 뽑은 것이다. 물론 필자도 모든 NGC 대상을 다 관측한 것은 아니기 때문에 이 멋진 대상 100선이 완벽하다고 볼 수는 없다. 이 100선에 대해 다른 견해를 피력하는 사람도 많으리라 생각한다. 하지만 10인치 망원경의 한계 내로 들어오는 것들은 거의 모두를 관측해 보았기 때문에 그 선정에 있어 그리 크게 어긋남은 없으리라 판단한다.
+</p><p>
+	NGC 대상이라는 것이 워낙 광범위하기 때문에 관측하는 망원경의 크기에 따라 그 느낌도 상당히 달라진다. 이 NGC 100선은 아마추어들이 통상적으로 성운·성단을 관측할 때 가장 많이 쓰는 8인치 망원경 기준이라고 생각하면 된다. 아마 6인치 정도면 여기의 모든 대상을 관측할 수 있으리라 생각하지만 그중 몇몇 대상은 어두워서 그 감흥이 떨어지는 것이 있을 것이다.
+</p><p>
+	100개의 대상을 선별함에 있어 단순히 멋지게 보이는 것보다는 다른 요인들도 많이 작용하였다. 예를 들면 그 위치가 특이하여 관측하기에 색다른 맛이 있다든지, 주변에 다른 대상들이 없어서 선정된 것, 또 여러 종류를 고르게 분포시키기 위해 들어간 것 등이 있다.
+</p><p>
+	이 대상들을 관측해 나가다보면 여러분들은 메시에 대상과는 또다른 NGC 대상들의 멋을 동시에 느끼게 되리라 생각한다. 또, 여기에 나열된 NGC 대상들을 모두 관측한다면 여러분들도 성운·성단·은하 관측의 베테랑이 될 것이라 확신한다.
 </p>
 
-	<pre font="맑은고딕">
-	번호  NGC   종류    적경    적위    등급     크기             설명
-	                 시  분   도  분            분
-	1:	  40	PN	 0 13.0	 72 32	11.0	  0.6	하늘의 북극 주변에 위치한 멋진 대상
-	2:	 129	OC	 0 29.9	 60 14	 6.5	 21.0	가을 은하수 내의 멋진 대상 중 하나
-	3:	 253	GL	 0 47.6	-25 17	 7.1	 25.1	남쪽 하늘의 밝고 큰 은하
-	4:	 404	GL	 1  9.4	 35 43	10.1	  4.4	안드로메다 베타서에서 6분 떨어짐
-	5:	 457	OC	 1 19.1	 58 20	 6.4	 13.0	올빼미 성단
-	6:	 663	OC	 1 46.0	 61 15	 7.1	 16.0	가을 은하수 내의 멋진 대상 중 하나
-	7:	 752	OC	 1 57.8	 37 41	 5.7	 50.0	안드로메다자리의 돋보이는 대상
-	8:	 869	OC	 2 19.0	 57  9	 4.0	 30.0	페르세우스 이중성단
-	9:	 884	OC	 2 22.4	 57  7	 4.0	 30.0	페르세우스 이중성단
-	10:	 891	GL	 2 22.6	 42 21	10.0	 13.5	멋진 측면은하
-	11:	 936	GL	 2 27.6	 -1  9	10.1	  5.2	고래자리의 비교적 밝은 대상
-	12:	1023	GL	 2 40.4	 39  4	 9.5	  8.7	891과 쌍벽을 이루는 대상
-	13:	1245	OC	 3 14.7	 47 15	 8.4	 10.0	가을 은하수 내의 멋진 대상
-	14:	1491	NB	 4  3.4	 51 19	20.0	  3.0	흥미로운 작은 성운
-	15:	1502	OC	 4  7.7	 62 20	 5.7	  8.0	기린자리에 위치한 밝은 대상
-	16:	1528	OC	 4 15.4	 51 14	 6.4	 24.0	1491부근에 위치
-	17:	1647	OC	 4 46.0	 19  4	 6.4	 45.0	히아데스 바로 위에 위치
-	18:	1851	GC	 5 14.1	-40  3	 7.3	 11.0	겨울철 대표적 구상 성단
-	19:	1931	CN	 5 31.4	 34 15	11.3	  3.0	밝고 흥미로운 작은 성운
-	20:	2024	NB	 5 41.9	 -1 51	20.0	 30.0	크리스마스트리성운, 말머리성운 옆
-	21:	2071	NB	 5 47.2	  0 18	20.0	  4.0	M78 부근
-	22:	2158	OC	 6  7.5	 24  6	 8.6	  5.0	M35 옆
-	23:	2169	OC	 6  8.4	 13 57	 5.9	  7.0	37자 모양
-	24:	2243	OC	 6 29.8	-31 17	 9.4	  5.0	작고 특이한 대상
-	25:	2261	NB	 6 39.2	  8 44	20.0	  2.0	변광성운, 외뿔소자리 R 포함
-	26:	2281	OC	 6 49.3	 41  4	 5.4	 15.0	마차부자리 밝은 대상
-	27:	2301	OC	 6 51.8	  0 28	 6.0	 12.0	겨울철 은하수 내의 멋진 대상
-	28:	2354	OC	 7 14.3	-25 44	 6.5	 20.0	겨울철 은하수 내의 멋진 대상
-	29:	2362	CN	 7 18.8	-24 57	 4.1	  8.0	큰개자리 타우성 포함
-	30:	2392	PN	 7 29.2	 20 55	10.0	  0.7	에스키모 성운
-	31:	2403	GL	 7 36.9	 65 36	 8.4	 17.8	기린자리의 밝은 대상
-	32:	2419	GC	 7 38.1	 38 53	10.4	  4.1	겨울철 구상성단
-	33:	2420	OC	 7 38.5	 21 34	 8.3	 10.0	쌍동이자리의 멋진 대상
-	34:	2438	PN	 7 41.8	-14 44	10.0	  1.1	M46 내부에 위치
-	35:	2451	OC	 7 45.4	-37 58	 2.8	 45.0	화려한 대상, 남천의 이중성단
-	36:	2477	OC	 7 52.3	-38 33	 5.8	 27.0	화려한 대상, 남천의 이중성단
-	37:	2655	GL	 8 55.6	 78 13	10.1	  5.1	하늘의 북극에 가까운 대상
-	38:	2683	GL	 8 52.7	 33 25	 9.7	  9.3	봄철의 대표적은하
-	39:	2841	GL	 9 22.0	 50 58	 9.3	  8.1	봄철의 멋진 은하
-	40:	2903	GL	 9 32.2	 21 30	 8.9	 12.6	봄철의 대표적 은하
-	41:	3115	GL	10  5.2	 -7 43	 9.2	  8.3	육분의자리의 밝은 은하
-	42:	3147	GL	10 16.9	 73 24	10.7	  4.0	천의 북극에 가까운 대상
-	43:	3184	GL	10 18.3	 41 25	 9.8	  6.9	큰곰자리 뮤우성 부근
-	44:	3242	PN	10 24.8	-18 38	 9.0	 20.8	목성상 성운
-	45:	3521	GL	11  5.8	  0  2	 8.9	  9.5	봄철의 밝은 은하
-	46:	3628	GL	11 20.3	 13 36	 9.5	 14.8	M65, M66 부근
-	47:	3877	GL	11 46.1	 47 30	12.0	  5.4	큰곰자리 치성에서 17분 떨어짐
-	48:	3953	GL	11 53.8	 52 20	10.1	  6.6	M109 부근
-	49:	4361	PN	12 24.5	-18 48	10.0	  1.8	까마귀자리 내부위치
-	50:	4449	GL	12 28.2	 44  6	 9.4	  5.1	특이 형상 은하
-	51:	4490	GL	12 30.6	 41 38	 9.8	  5.9	옆에 작은 은하 4485 위치
-	52:	4559	GL	12 36.0	 27 58	 9.9	 10.5	봄철의 밝은 은하
-	53:	4565	GL	12 36.3	 25 59	 9.6	 16.2	가장 멋진 측면은하
-	54:	4567	GL	12 36.5	 11 15	11.3	  3.0	쌍동이 은하
-	55:	4568	GL	12 36.6	 11 14	10.8	  4.6	쌍동이 은하
-	56:	4631	GL	12 42.1	 32 32	 9.3	 15.1	멋진 측면은하, 4627이 붙어있음
-	57:	4656	GL	12 44.0	 32 10	10.4	 13.8	4657로 인하여 기이한 형태로 나타남
-	58:	4699	GL	12 49.0	 -8 40	 9.6	  3.5	봄철의 밝은 은하
-	59:	4725	GL	12 50.4	 25 30	 9.2	 11.0	봄철의 밝은 은하
-	60:	5128	GL	13 25.5	-43  1	 7.0	 18.2	센타우르스 A
-	61:	5139	GC	13 26.8	-47 29	 3.7	 36.3	오메가 센타우리
-	62:	5195	GL	13 30.0	 47 16	 9.6	  5.4	M51 옆
-	63:	5253	GL	13 39.9	-31 39	10.6	  4.0	남천에 위치한 은하
-	64:	5466	GC	14  5.5	 28 32	 9.1	 11.0	봄철의 구상성단
-	65:	5746	GL	14 44.9	  1 57	10.6	  7.9	밝은 측면은하
-	66:	6144	GC	16 27.3	-26  2	 9.1	  9.3	안타레스 부근
-	67:	6210	PN	16 44.5	 23 49	 9.0	  0.2	헤르쿨레스 H 내부 위치
-	68:	6229	GC	16 47.0	 47 32	 9.4	  4.5	헤르쿨레스 북쪽 위치
-	69:	6231	CN	16 54.0	-41 48	 2.6	 15.0	전갈자리 제타성 포함
-	70:	6293	GC	17 10.2	-26 35	 8.2	  7.9	M19 부근
-	71:	6304	GC	17 14.5	-29 28	 8.4	  6.8	여름철 구상성단
-	72:	6356	GC	17 23.6	-17 49	 8.4	  7.2	M9 부근
-	73:	6441	GC	17 50.2	-37  3	 7.4	  7.8	전갈자리 G 옆
-	74:	6520	OC	18  3.4	-27 54	 8.0	  6.0	암흑성운 B86포함
-	75:	6522	GC	18  3.6	-30  2	 8.6	  5.6	쌍동이 성단
-	76:	6528	GC	18  4.8	-30  3	 9.5	  3.7	쌍동이 성단
-	77:	6541	GC	18  8.0	-43 42	 6.6	 13.1	남천 구상성단
-	78:	6543	PN	17 58.6	 66 38	 9.0	  5.8	천의북극 주변에 위치한 멋진 대상
-	79:	6569	GC	18 13.6	-31 50	 8.7	  5.8	은하수 중심부근 구상성단
-	80:	6572	PN	18 12.1	  6 51	 9.0	  0.1	땅군자리 행성상 성운
-	81:	6624	GC	18 23.7	-30 22	 8.3	  5.9	궁수자리 델타성 옆
-	82:	6712	GC	18 53.1	 -8 42	 8.2	  7.2	방패자리 구상성단
-	83:	6723	GC	18 59.6	-36 38	 7.3	 11.0	남천의 구상성단
-	84:	6818	PN	19 44.0	-14  9	10.0	  0.3	6822 위쪽
-	85:	6819	OC	19 41.3	 40 11	 7.3	  5.0	밀집된 작은 성단
-	86:	6826	PN	19 44.8	 50 31	10.0	  2.3	깜박이는 행성상 성운
-	87:	6910	OC	20 23.1	 40 47	 7.4	  8.0	백조자리 감마성 부근
-	88:	6934	GC	20 34.2	  7 24	 8.9	  5.9	돌고래자리 구상성단
-	89:	6939	OC	20 31.4	 60 38	 7.8	  8.0	은하 6946 옆
-	90:	6940	OC	20 34.6	 28 18	 6.3	 31.0	여름철 산개성단
-	91:	6960	NB	20 45.7	 30 43	20.0	 70.0	베일 성운, 52번성 옆
-	92:	6992	NB	20 56.4	 31 43	20.0	 60.0	베일 성운
-	93:	7009	PN	21  4.2	-11 22	 8.0	  1.7	토성상 성운
-	94:	7128	OC	21 44.0	 53 43	 9.7	  3.0	여름철 산개성단
-	95:	7293	PN	22 29.6	-20 48	20.0	 12.8	이중나선 행성상 성운
-	96:	7331	GL	22 37.1	 34 25	 9.5	 10.7	스테판 오중주 부근
-	97:	7510	OC	23 11.5	 60 34	 7.9	  4.0	작고 밀집된 성단
-	98:	7635	NB	23 20.7	 61 12	20.0	 15.0	버블성운
-	99:	7662	PN	23 25.9	 42 33	 9.0	  2.2	안드로메다자리 행성상 성운
-	100:	7789	OC	23 57.0	 56 44	 6.7	 16.0	가장 멋진 밀집된 성단
-</pre>
+
+	<hr style="margin-bottom: 0;">
+	<table>
+		<thead>
+		<tr>
+			<th>번호</th>
+			<th>NGC</th>
+			<th>종류</th>
+			<th>별자리</th>
+			<th>등급</th>
+			<th>크기(')</th>
+			<th>설명</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td class="align-right">1</td>
+			<td class="align-right">40</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">세페우스</td>
+			<td class="align-decimal">12.3</td>
+			<td class="align-decimal">1.23</td>
+			<td class="align-left">하늘의 북극 주변에 위치한 멋진 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">2</td>
+			<td class="align-right">129</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">카시오페아</td>
+			<td class="align-decimal">6.5</td>
+			<td class="align-decimal">12.00</td>
+			<td class="align-left">가을 은하수 내의 멋진 대상 중 하나</td>
+		</tr>
+		<tr>
+			<td class="align-right">3</td>
+			<td class="align-right">253</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">조각가</td>
+			<td class="align-decimal">7.2</td>
+			<td class="align-decimal">29.00</td>
+			<td class="align-left">남쪽 하늘의 밝고 큰 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">4</td>
+			<td class="align-right">404</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">안드로메다</td>
+			<td class="align-decimal">10.3</td>
+			<td class="align-decimal">3.50</td>
+			<td class="align-left">안드로메다 베타서에서 6분 떨어짐</td>
+		</tr>
+		<tr>
+			<td class="align-right">5</td>
+			<td class="align-right">457</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">카시오페아</td>
+			<td class="align-decimal">6.4</td>
+			<td class="align-decimal">20.00</td>
+			<td class="align-left">올빼미 성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">6</td>
+			<td class="align-right">663</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">카시오페아</td>
+			<td class="align-decimal">7.1</td>
+			<td class="align-decimal">15.00</td>
+			<td class="align-left">가을 은하수 내의 멋진 대상 중 하나</td>
+		</tr>
+		<tr>
+			<td class="align-right">7</td>
+			<td class="align-right">752</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">안드로메다</td>
+			<td class="align-decimal">5.7</td>
+			<td class="align-decimal">75.00</td>
+			<td class="align-left">안드로메다자리의 돋보이는 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">8</td>
+			<td class="align-right">869</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">페르세우스</td>
+			<td class="align-decimal">5.3</td>
+			<td class="align-decimal">18.00</td>
+			<td class="align-left">페르세우스 이중성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">9</td>
+			<td class="align-right">884</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">페르세우스</td>
+			<td class="align-decimal">6.1</td>
+			<td class="align-decimal">18.00</td>
+			<td class="align-left">페르세우스 이중성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">10</td>
+			<td class="align-right">891</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">안드로메다</td>
+			<td class="align-decimal">9.9</td>
+			<td class="align-decimal">11.70</td>
+			<td class="align-left">멋진 측면은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">11</td>
+			<td class="align-right">936</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">고래</td>
+			<td class="align-decimal">10.2</td>
+			<td class="align-decimal">4.70</td>
+			<td class="align-left">고래자리의 비교적 밝은 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">12</td>
+			<td class="align-right">1023</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">페르세우스</td>
+			<td class="align-decimal">9.4</td>
+			<td class="align-decimal">7.40</td>
+			<td class="align-left">891과 쌍벽을 이루는 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">13</td>
+			<td class="align-right">1245</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">페르세우스</td>
+			<td class="align-decimal">8.4</td>
+			<td class="align-decimal">10.00</td>
+			<td class="align-left">가을 은하수 내의 멋진 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">14</td>
+			<td class="align-right">1491</td>
+			<td class="align-center">방출 성운</td>
+			<td class="align-center">페르세우스</td>
+			<td class="align-decimal">-</td>
+			<td class="align-decimal">25.00</td>
+			<td class="align-left">흥미로운 작은 성운</td>
+		</tr>
+		<tr>
+			<td class="align-right">15</td>
+			<td class="align-right">1502</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">기린</td>
+			<td class="align-decimal">6.9</td>
+			<td class="align-decimal">20.00</td>
+			<td class="align-left">기린자리에 위치한 밝은 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">16</td>
+			<td class="align-right">1528</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">페르세우스</td>
+			<td class="align-decimal">6.4</td>
+			<td class="align-decimal">18.00</td>
+			<td class="align-left">1491부근에 위치</td>
+		</tr>
+		<tr>
+			<td class="align-right">17</td>
+			<td class="align-right">1647</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">황소</td>
+			<td class="align-decimal">6.4</td>
+			<td class="align-decimal">40.00</td>
+			<td class="align-left">히아데스 바로 위에 위치</td>
+		</tr>
+		<tr>
+			<td class="align-right">18</td>
+			<td class="align-right">1851</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">비둘기</td>
+			<td class="align-decimal">7.1</td>
+			<td class="align-decimal">12.00</td>
+			<td class="align-left">겨울철 대표적 구상 성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">19</td>
+			<td class="align-right">1931</td>
+			<td class="align-center">성단 및 성운</td>
+			<td class="align-center">마차부</td>
+			<td class="align-decimal">10.1</td>
+			<td class="align-decimal">-</td>
+			<td class="align-left">밝고 흥미로운 작은 성운</td>
+		</tr>
+		<tr>
+			<td class="align-right">20</td>
+			<td class="align-right">2024</td>
+			<td class="align-center">방출 성운</td>
+			<td class="align-center">오리온</td>
+			<td class="align-decimal">-</td>
+			<td class="align-decimal">30.00</td>
+			<td class="align-left">크리스마스트리성운, 말머리성운 옆</td>
+		</tr>
+		<tr>
+			<td class="align-right">21</td>
+			<td class="align-right">2071</td>
+			<td class="align-center">반사 성운</td>
+			<td class="align-center">오리온</td>
+			<td class="align-decimal">8.0</td>
+			<td class="align-decimal">7.00</td>
+			<td class="align-left">M78 부근</td>
+		</tr>
+		<tr>
+			<td class="align-right">22</td>
+			<td class="align-right">2158</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">쌍둥이</td>
+			<td class="align-decimal">8.6</td>
+			<td class="align-decimal">5.00</td>
+			<td class="align-left">M35 옆</td>
+		</tr>
+		<tr>
+			<td class="align-right">23</td>
+			<td class="align-right">2169</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">오리온</td>
+			<td class="align-decimal">5.9</td>
+			<td class="align-decimal">6.00</td>
+			<td class="align-left">37자 모양</td>
+		</tr>
+		<tr>
+			<td class="align-right">24</td>
+			<td class="align-right">2243</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">큰개</td>
+			<td class="align-decimal">9.4</td>
+			<td class="align-decimal">8.30</td>
+			<td class="align-left">작고 특이한 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">25</td>
+			<td class="align-right">2261</td>
+			<td class="align-center">성단 및 성운</td>
+			<td class="align-center">외뿔소</td>
+			<td class="align-decimal">9.0</td>
+			<td class="align-decimal">3.00</td>
+			<td class="align-left">변광성운, 외뿔소자리 R 포함</td>
+		</tr>
+		<tr>
+			<td class="align-right">26</td>
+			<td class="align-right">2281</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">마차부</td>
+			<td class="align-decimal">5.4</td>
+			<td class="align-decimal">25.00</td>
+			<td class="align-left">마차부자리 밝은 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">27</td>
+			<td class="align-right">2301</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">외뿔소</td>
+			<td class="align-decimal">6.0</td>
+			<td class="align-decimal">15.00</td>
+			<td class="align-left">겨울철 은하수 내의 멋진 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">28</td>
+			<td class="align-right">2354</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">큰개</td>
+			<td class="align-decimal">6.5</td>
+			<td class="align-decimal">18.00</td>
+			<td class="align-left">겨울철 은하수 내의 멋진 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">29</td>
+			<td class="align-right">2362</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">큰개</td>
+			<td class="align-decimal">3.8</td>
+			<td class="align-decimal">6.00</td>
+			<td class="align-left">큰개자리 타우성 포함</td>
+		</tr>
+		<tr>
+			<td class="align-right">30</td>
+			<td class="align-right">2392</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">쌍둥이</td>
+			<td class="align-decimal">9.1</td>
+			<td class="align-decimal">0.90</td>
+			<td class="align-left">에스키모 성운</td>
+		</tr>
+		<tr>
+			<td class="align-right">31</td>
+			<td class="align-right">2403</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">기린</td>
+			<td class="align-decimal">8.5</td>
+			<td class="align-decimal">23.40</td>
+			<td class="align-left">기린자리의 밝은 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">32</td>
+			<td class="align-right">2419</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">살괭이</td>
+			<td class="align-decimal">10.3</td>
+			<td class="align-decimal">4.60</td>
+			<td class="align-left">겨울철 구상성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">33</td>
+			<td class="align-right">2420</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">쌍둥이</td>
+			<td class="align-decimal">8.3</td>
+			<td class="align-decimal">6.00</td>
+			<td class="align-left">쌍동이자리의 멋진 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">34</td>
+			<td class="align-right">2438</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">고물</td>
+			<td class="align-decimal">10.8</td>
+			<td class="align-decimal">1.27</td>
+			<td class="align-left">M46 내부에 위치</td>
+		</tr>
+		<tr>
+			<td class="align-right">35</td>
+			<td class="align-right">2451</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">고물</td>
+			<td class="align-decimal">2.8</td>
+			<td class="align-decimal">50.00</td>
+			<td class="align-left">화려한 대상, 남천의 이중성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">36</td>
+			<td class="align-right">2477</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">고물</td>
+			<td class="align-decimal">5.8</td>
+			<td class="align-decimal">20.00</td>
+			<td class="align-left">화려한 대상, 남천의 이중성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">37</td>
+			<td class="align-right">2655</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">기린</td>
+			<td class="align-decimal">10.1</td>
+			<td class="align-decimal">4.90</td>
+			<td class="align-left">하늘의 북극에 가까운 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">38</td>
+			<td class="align-right">2683</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">살괭이</td>
+			<td class="align-decimal">9.8</td>
+			<td class="align-decimal">9.30</td>
+			<td class="align-left">봄철의 대표적은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">39</td>
+			<td class="align-right">2841</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">큰곰</td>
+			<td class="align-decimal">9.2</td>
+			<td class="align-decimal">8.10</td>
+			<td class="align-left">봄철의 멋진 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">40</td>
+			<td class="align-right">2903</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">사자</td>
+			<td class="align-decimal">9.0</td>
+			<td class="align-decimal">12.60</td>
+			<td class="align-left">봄철의 대표적 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">41</td>
+			<td class="align-right">3115</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">육분의</td>
+			<td class="align-decimal">8.9</td>
+			<td class="align-decimal">7.20</td>
+			<td class="align-left">육분의자리의 밝은 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">42</td>
+			<td class="align-right">3147</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">용</td>
+			<td class="align-decimal">10.6</td>
+			<td class="align-decimal">3.90</td>
+			<td class="align-left">천의 북극에 가까운 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">43</td>
+			<td class="align-right">3184</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">큰곰</td>
+			<td class="align-decimal">9.8</td>
+			<td class="align-decimal">7.40</td>
+			<td class="align-left">큰곰자리 뮤우성 부근</td>
+		</tr>
+		<tr>
+			<td class="align-right">44</td>
+			<td class="align-right">3242</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">바다뱀</td>
+			<td class="align-decimal">7.7</td>
+			<td class="align-decimal">1.07</td>
+			<td class="align-left">목성상 성운</td>
+		</tr>
+		<tr>
+			<td class="align-right">45</td>
+			<td class="align-right">3521</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">사자</td>
+			<td class="align-decimal">9.0</td>
+			<td class="align-decimal">11.20</td>
+			<td class="align-left">봄철의 밝은 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">46</td>
+			<td class="align-right">3628</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">사자</td>
+			<td class="align-decimal">9.5</td>
+			<td class="align-decimal">13.10</td>
+			<td class="align-left">M65, M66 부근</td>
+		</tr>
+		<tr>
+			<td class="align-right">47</td>
+			<td class="align-right">3877</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">큰곰</td>
+			<td class="align-decimal">11.0</td>
+			<td class="align-decimal">5.30</td>
+			<td class="align-left">큰곰자리 치성에서 17분 떨어짐</td>
+		</tr>
+		<tr>
+			<td class="align-right">48</td>
+			<td class="align-right">3953</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">큰곰</td>
+			<td class="align-decimal">10.1</td>
+			<td class="align-decimal">6.90</td>
+			<td class="align-left">M109 부근</td>
+		</tr>
+		<tr>
+			<td class="align-right">49</td>
+			<td class="align-right">4361</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">까마귀</td>
+			<td class="align-decimal">10.9</td>
+			<td class="align-decimal">2.10</td>
+			<td class="align-left">까마귀자리 내부위치</td>
+		</tr>
+		<tr>
+			<td class="align-right">50</td>
+			<td class="align-right">4449</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">사냥개</td>
+			<td class="align-decimal">9.6</td>
+			<td class="align-decimal">6.20</td>
+			<td class="align-left">특이 형상 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">51</td>
+			<td class="align-right">4490</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">사냥개</td>
+			<td class="align-decimal">9.8</td>
+			<td class="align-decimal">6.40</td>
+			<td class="align-left">옆에 작은 은하 4485 위치</td>
+		</tr>
+		<tr>
+			<td class="align-right">52</td>
+			<td class="align-right">4559</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">머리털</td>
+			<td class="align-decimal">10.0</td>
+			<td class="align-decimal">10.70</td>
+			<td class="align-left">봄철의 밝은 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">53</td>
+			<td class="align-right">4565</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">머리털</td>
+			<td class="align-decimal">9.6</td>
+			<td class="align-decimal">15.80</td>
+			<td class="align-left">가장 멋진 측면은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">54</td>
+			<td class="align-right">4567</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">처녀</td>
+			<td class="align-decimal">11.3</td>
+			<td class="align-decimal">3.10</td>
+			<td class="align-left">쌍동이 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">55</td>
+			<td class="align-right">4568</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">처녀</td>
+			<td class="align-decimal">10.8</td>
+			<td class="align-decimal">4.60</td>
+			<td class="align-left">쌍동이 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">56</td>
+			<td class="align-right">4631</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">사냥개</td>
+			<td class="align-decimal">9.2</td>
+			<td class="align-decimal">15.20</td>
+			<td class="align-left">멋진 측면은하, 4627이 붙어있음</td>
+		</tr>
+		<tr>
+			<td class="align-right">57</td>
+			<td class="align-right">4656</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">사냥개</td>
+			<td class="align-decimal">10.5</td>
+			<td class="align-decimal">15.30</td>
+			<td class="align-left">4657로 인하여 기이한 형태로 나타남</td>
+		</tr>
+		<tr>
+			<td class="align-right">58</td>
+			<td class="align-right">4699</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">처녀</td>
+			<td class="align-decimal">9.5</td>
+			<td class="align-decimal">3.80</td>
+			<td class="align-left">봄철의 밝은 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">59</td>
+			<td class="align-right">4725</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">머리털</td>
+			<td class="align-decimal">9.4</td>
+			<td class="align-decimal">10.70</td>
+			<td class="align-left">봄철의 밝은 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">60</td>
+			<td class="align-right">5128</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">센타우루스</td>
+			<td class="align-decimal">6.8</td>
+			<td class="align-decimal">25.70</td>
+			<td class="align-left">센타우르스 A</td>
+		</tr>
+		<tr>
+			<td class="align-right">61</td>
+			<td class="align-right">5139</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">센타우루스</td>
+			<td class="align-decimal">5.3</td>
+			<td class="align-decimal">55.00</td>
+			<td class="align-left">오메가 센타우리</td>
+		</tr>
+		<tr>
+			<td class="align-right">62</td>
+			<td class="align-right">5195</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">사냥개</td>
+			<td class="align-decimal">9.6</td>
+			<td class="align-decimal">5.90</td>
+			<td class="align-left">M51 옆</td>
+		</tr>
+		<tr>
+			<td class="align-right">63</td>
+			<td class="align-right">5253</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">센타우루스</td>
+			<td class="align-decimal">10.4</td>
+			<td class="align-decimal">5.00</td>
+			<td class="align-left">남천에 위치한 은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">64</td>
+			<td class="align-right">5466</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">목동</td>
+			<td class="align-decimal">9.2</td>
+			<td class="align-decimal">9.00</td>
+			<td class="align-left">봄철의 구상성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">65</td>
+			<td class="align-right">5746</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">처녀</td>
+			<td class="align-decimal">10.3</td>
+			<td class="align-decimal">7.40</td>
+			<td class="align-left">밝은 측면은하</td>
+		</tr>
+		<tr>
+			<td class="align-right">66</td>
+			<td class="align-right">6144</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">전갈</td>
+			<td class="align-decimal">9.0</td>
+			<td class="align-decimal">7.40</td>
+			<td class="align-left">안타레스 부근</td>
+		</tr>
+		<tr>
+			<td class="align-right">67</td>
+			<td class="align-right">6210</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">헤르쿨레스</td>
+			<td class="align-decimal">8.8</td>
+			<td class="align-decimal">0.35</td>
+			<td class="align-left">헤르쿨레스 H 내부 위치</td>
+		</tr>
+		<tr>
+			<td class="align-right">68</td>
+			<td class="align-right">6229</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">헤르쿨레스</td>
+			<td class="align-decimal">9.4</td>
+			<td class="align-decimal">4.50</td>
+			<td class="align-left">헤르쿨레스 북쪽 위치</td>
+		</tr>
+		<tr>
+			<td class="align-right">69</td>
+			<td class="align-right">6231</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">전갈</td>
+			<td class="align-decimal">2.6</td>
+			<td class="align-decimal">14.00</td>
+			<td class="align-left">전갈자리 제타성 포함</td>
+		</tr>
+		<tr>
+			<td class="align-right">70</td>
+			<td class="align-right">6293</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">뱀주인</td>
+			<td class="align-decimal">8.3</td>
+			<td class="align-decimal">8.20</td>
+			<td class="align-left">M19 부근</td>
+		</tr>
+		<tr>
+			<td class="align-right">71</td>
+			<td class="align-right">6304</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">뱀주인</td>
+			<td class="align-decimal">8.3</td>
+			<td class="align-decimal">8.00</td>
+			<td class="align-left">여름철 구상성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">72</td>
+			<td class="align-right">6356</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">뱀주인</td>
+			<td class="align-decimal">8.2</td>
+			<td class="align-decimal">10.00</td>
+			<td class="align-left">M9 부근</td>
+		</tr>
+		<tr>
+			<td class="align-right">73</td>
+			<td class="align-right">6441</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">전갈</td>
+			<td class="align-decimal">7.2</td>
+			<td class="align-decimal">9.60</td>
+			<td class="align-left">전갈자리 G 옆</td>
+		</tr>
+		<tr>
+			<td class="align-right">74</td>
+			<td class="align-right">6520</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">궁수</td>
+			<td class="align-decimal">7.6</td>
+			<td class="align-decimal">5.00</td>
+			<td class="align-left">암흑성운 B86포함</td>
+		</tr>
+		<tr>
+			<td class="align-right">75</td>
+			<td class="align-right">6522</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">궁수</td>
+			<td class="align-decimal">9.9</td>
+			<td class="align-decimal">9.40</td>
+			<td class="align-left">쌍동이 성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">76</td>
+			<td class="align-right">6528</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">궁수</td>
+			<td class="align-decimal">9.6</td>
+			<td class="align-decimal">5.00</td>
+			<td class="align-left">쌍동이 성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">77</td>
+			<td class="align-right">6541</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">남쪽왕관</td>
+			<td class="align-decimal">6.3</td>
+			<td class="align-decimal">15.00</td>
+			<td class="align-left">남천 구상성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">78</td>
+			<td class="align-right">6543</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">용</td>
+			<td class="align-decimal">8.1</td>
+			<td class="align-decimal">0.33</td>
+			<td class="align-left">천의북극 주변에 위치한 멋진 대상</td>
+		</tr>
+		<tr>
+			<td class="align-right">79</td>
+			<td class="align-right">6569</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">궁수</td>
+			<td class="align-decimal">8.4</td>
+			<td class="align-decimal">6.40</td>
+			<td class="align-left">은하수 중심부근 구상성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">80</td>
+			<td class="align-right">6572</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">뱀주인</td>
+			<td class="align-decimal">8.1</td>
+			<td class="align-decimal">0.25</td>
+			<td class="align-left">땅군자리 행성상 성운</td>
+		</tr>
+		<tr>
+			<td class="align-right">81</td>
+			<td class="align-right">6624</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">궁수</td>
+			<td class="align-decimal">7.6</td>
+			<td class="align-decimal">8.80</td>
+			<td class="align-left">궁수자리 델타성 옆</td>
+		</tr>
+		<tr>
+			<td class="align-right">82</td>
+			<td class="align-right">6712</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">방패</td>
+			<td class="align-decimal">8.1</td>
+			<td class="align-decimal">9.80</td>
+			<td class="align-left">방패자리 구상성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">83</td>
+			<td class="align-right">6723</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">궁수</td>
+			<td class="align-decimal">6.8</td>
+			<td class="align-decimal">13.00</td>
+			<td class="align-left">남천의 구상성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">84</td>
+			<td class="align-right">6818</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">궁수</td>
+			<td class="align-decimal">9.3</td>
+			<td class="align-decimal">0.77</td>
+			<td class="align-left">6822 위쪽</td>
+		</tr>
+		<tr>
+			<td class="align-right">85</td>
+			<td class="align-right">6819</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">백조</td>
+			<td class="align-decimal">7.3</td>
+			<td class="align-decimal">5.00</td>
+			<td class="align-left">밀집된 작은 성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">86</td>
+			<td class="align-right">6826</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">백조</td>
+			<td class="align-decimal">8.8</td>
+			<td class="align-decimal">0.60</td>
+			<td class="align-left">깜박이는 행성상 성운</td>
+		</tr>
+		<tr>
+			<td class="align-right">87</td>
+			<td class="align-right">6910</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">백조</td>
+			<td class="align-decimal">7.4</td>
+			<td class="align-decimal">10.00</td>
+			<td class="align-left">백조자리 감마성 부근</td>
+		</tr>
+		<tr>
+			<td class="align-right">88</td>
+			<td class="align-right">6934</td>
+			<td class="align-center">구상 성단</td>
+			<td class="align-center">돌고래</td>
+			<td class="align-decimal">8.9</td>
+			<td class="align-decimal">7.10</td>
+			<td class="align-left">돌고래자리 구상성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">89</td>
+			<td class="align-right">6939</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">세페우스</td>
+			<td class="align-decimal">7.8</td>
+			<td class="align-decimal">10.00</td>
+			<td class="align-left">은하 6946 옆</td>
+		</tr>
+		<tr>
+			<td class="align-right">90</td>
+			<td class="align-right">6940</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">여우</td>
+			<td class="align-decimal">6.3</td>
+			<td class="align-decimal">25.00</td>
+			<td class="align-left">여름철 산개성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">91</td>
+			<td class="align-right">6960</td>
+			<td class="align-center">초신성 잔해</td>
+			<td class="align-center">백조</td>
+			<td class="align-decimal">7.0</td>
+			<td class="align-decimal">70.00</td>
+			<td class="align-left">베일 성운, 52번성 옆</td>
+		</tr>
+		<tr>
+			<td class="align-right">92</td>
+			<td class="align-right">6992</td>
+			<td class="align-center">초신성 잔해</td>
+			<td class="align-center">백조</td>
+			<td class="align-decimal">7.0</td>
+			<td class="align-decimal">60.00</td>
+			<td class="align-left">베일 성운</td>
+		</tr>
+		<tr>
+			<td class="align-right">93</td>
+			<td class="align-right">7009</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">물병</td>
+			<td class="align-decimal">8.0</td>
+			<td class="align-decimal">0.58</td>
+			<td class="align-left">토성상 성운</td>
+		</tr>
+		<tr>
+			<td class="align-right">94</td>
+			<td class="align-right">7128</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">백조</td>
+			<td class="align-decimal">9.7</td>
+			<td class="align-decimal">4.00</td>
+			<td class="align-left">여름철 산개성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">95</td>
+			<td class="align-right">7293</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">물병</td>
+			<td class="align-decimal">7.3</td>
+			<td class="align-decimal">17.57</td>
+			<td class="align-left">이중나선 행성상 성운</td>
+		</tr>
+		<tr>
+			<td class="align-right">96</td>
+			<td class="align-right">7331</td>
+			<td class="align-center">은하</td>
+			<td class="align-center">페가수스</td>
+			<td class="align-decimal">9.5</td>
+			<td class="align-decimal">10.20</td>
+			<td class="align-left">스테판 오중주 부근</td>
+		</tr>
+		<tr>
+			<td class="align-right">97</td>
+			<td class="align-right">7510</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">세페우스</td>
+			<td class="align-decimal">7.9</td>
+			<td class="align-decimal">7.00</td>
+			<td class="align-left">작고 밀집된 성단</td>
+		</tr>
+		<tr>
+			<td class="align-right">98</td>
+			<td class="align-right">7635</td>
+			<td class="align-center">방출 성운</td>
+			<td class="align-center">카시오페아</td>
+			<td class="align-decimal">11.0</td>
+			<td class="align-decimal">15.00</td>
+			<td class="align-left">버블성운</td>
+		</tr>
+		<tr>
+			<td class="align-right">99</td>
+			<td class="align-right">7662</td>
+			<td class="align-center">행성상 성운</td>
+			<td class="align-center">안드로메다</td>
+			<td class="align-decimal">8.3</td>
+			<td class="align-decimal">0.62</td>
+			<td class="align-left">안드로메다자리 행성상 성운</td>
+		</tr>
+		<tr>
+			<td class="align-right">100</td>
+			<td class="align-right">7789</td>
+			<td class="align-center">산개 성단</td>
+			<td class="align-center">카시오페아</td>
+			<td class="align-decimal">6.7</td>
+			<td class="align-decimal">25.00</td>
+			<td class="align-left">가장 멋진 밀집된 성단</td>
+		</tr>
+		</tbody>
+	</table>
+
 	<hr>
-    <p align="center"><a href="https://starflower.info">별바라기 홈</a>&emsp;최초 작성: 2024년 03월 22일, 최종 변경: 2024년 03월 22일
+    <p align="center"><a href="https://starflower.info">별바라기 홈</a>&emsp;최초 작성: 2024년 03월 22일, 최종 변경: 2026년 05월 27일
     </p>
 
 </div>

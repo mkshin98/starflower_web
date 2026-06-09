@@ -142,9 +142,11 @@
 				img.alt = data[i].Title;
 				img.addEventListener("click", () => openHTMLFile(data[i].HTMLFileName));
 
-				const title = document.createElement('span');
-//				title.textContent = data[i].Title;
+
+				const title = document.createElement('div'); // span을 div로 변경
+
 				title.innerHTML = data[i].Title;
+				title.style.marginTop = '2px'; // 이미지와 글자 사이 간격 약간 주기
 
 				cell.appendChild(img);
 				cell.appendChild(title);
