@@ -44,7 +44,7 @@
 		// 1. 변수 설정
 		// 하드코딩하거나, Date 객체를 사용해 현재 날짜를 동적으로 가져올 수 있습니다.
 		const year = 2026;
-		const month_int = 6;
+		const month_int = 7;
 		const month = String(month_int).padStart(2, '0'); // 한 자리 월일 경우 앞에 '0'을 붙여 '05' 형태로 변환
 
 		/*
@@ -59,13 +59,12 @@
 		const starmapHTML = `
         <div class="div_bg_max700">
             <h2>${year}년 ${month_int}월의 별하늘</h2>
-			<ul class="sf_std">
-               <li>저녁 시간대 은하수가 동쪽 하늘에서 서서히 고도를 높인다.</li>
-               <li>새벽에는 은하수가 천정을 지날정도로 높이 올라온다. 밤새도록 다양한 고도의 은하수 사진 찍기 최적의 시기이다.</li>
-               <li>${month_int}월 17~18일 저녁 서쪽 하늘에서 초승달, 수성, 금성, 목성, M44가 함께 보이는 예쁜 모습이 예상된다.</li>
-               <li>${month_int}월 13~14일 새벽에는 그믐달, 화성, 좀생이별의 예쁜 모습이 예상된다. 토성은 조금 멀리 있다.</li>
+            <ul class="sf_std">
+               <li>저녁에 은하수가 꽤 높이 올라 오며, 자정쯤엔 <span class="blue-bold-text">안드로메다 은하</span>도 관측 가능하다.</li>
+               <li>${month_int}월 17일 저녁 서쪽 하늘에서 초승달과 금성이 함께 보이는 예쁜 모습이 예상된다.</li>
+               <li>${month_int}월 11~12일 새벽에는 그믐달, 화성, 좀생이별의 예쁜 모습이 예상된다. 토성은 조금 멀리 있다.</li>
                <li><a href="../z11_help/help_13_allskymap.html" target="_blank">별하늘 성도 도움말</a> 참조</li>
-			</ul>
+            </ul>
 
             <h3>저녁의 별하늘</h3>
             <div class="width100_left_margin_image">
@@ -86,6 +85,7 @@
                       width="100%" height="100%" alt="${year}년 ${month_int}월 별하늘 성도">
                </a>
             </div>
+
         </div>
         `;
 
