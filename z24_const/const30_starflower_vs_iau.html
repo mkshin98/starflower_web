@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../z90_images/favicon/favicon-32.png">
+<link rel="apple-touch-icon" href="../z90_images/favicon/favicon-180.png">
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYLQS1BKV9"></script>
 	<script>
@@ -40,10 +43,25 @@
 			cursor: pointer;
 			border: 1px solid #ccc;
 		}
+		.controls {
+			display: none; /* 별자리 선택 전에는 숨김 */
+			margin-top: 20px;
+			margin-bottom: 10px;
+			text-align: center;
+			background-color: #f9f9f9;
+			padding: 10px;
+			border: 1px solid #ddd;
+		}
+		.controls table {
+			width: 100%;
+		}
+		.controls label {
+			margin: 0 10px;
+			cursor: pointer;
+		}
 		.images {
 			display: flex;
 			justify-content: center;
-			margin-top: 20px;
 		}
 		.images table {
 			width: 100%;
@@ -62,27 +80,50 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <div class="div_bg_max1920">
-<a href="../index.html">별바라기 홈</a> > <a href="index24_const.html">별자리 성도</a><br>
+	<a href="../index.html">별바라기 홈</a> > <a href="index24_const.html">별자리 성도</a><br>
 
-<h2 align="left">성도 비교: 별바라기 vs IAU</h2>
+	<h2 align="left">성도 비교: 별바라기 vs IAU</h2>
 
-<p>
-	PC에서 보는 것이 편하다.<br>
-	별바라기 성도는 <a href="https://www.iau.org/public/themes/constellations/" target="_blank">국제천문연맹 (IAU)에서 작성한 성도</a>와
-	유사하게 작성했다. 둘을 비교해 보자.
-</p>
+	<p>
+		PC에서 보는 것이 편하다.<br>
+		별바라기 성도는 <a href="https://www.iau.org/public/themes/constellations/" target="_blank">국제천문연맹 (IAU)에서 작성한 성도</a>와
+		유사하게 작성했다. 둘을 비교해 보자.
+	</p>
 
 	<div class="constellation" id="constellationList"></div>
+
+	<!-- 라디오 버튼 컨트롤 영역 -->
+	<div class="controls" id="imageControls">
+		<table>
+			<tr>
+				<td width="50%">
+					<b>왼쪽 이미지:</b>
+					<label><input type="radio" name="leftType" value="SVG" onchange="updateImages()"> SVG</label>
+					<label><input type="radio" name="leftType" value="PNG" checked onchange="updateImages()"> PNG</label>
+					<label><input type="radio" name="leftType" value="JPG" onchange="updateImages()"> JPG</label>
+					<label><input type="radio" name="leftType" value="IAU" onchange="updateImages()"> IAU</label>
+				</td>
+				<td width="50%">
+					<b>오른쪽 이미지:</b>
+					<label><input type="radio" name="rightType" value="SVG" onchange="updateImages()"> SVG</label>
+					<label><input type="radio" name="rightType" value="PNG" onchange="updateImages()"> PNG</label>
+					<label><input type="radio" name="rightType" value="JPG" checked onchange="updateImages()"> JPG</label>
+					<label><input type="radio" name="rightType" value="IAU" onchange="updateImages()"> IAU</label>
+				</td>
+			</tr>
+		</table>
+	</div>
+
 	<div class="images" id="imageContainer"></div>
 
 	<script>
-//		const c_ConstName_HSort = [			 sf2020_common.js에 정의
-//		const c_ConstNameAbbr_HSort = [
-
 		const constellationList = document.getElementById('constellationList');
 		const imageContainer = document.getElementById('imageContainer');
+		const imageControls = document.getElementById('imageControls');
 
-		// 별자리 이름을 8개씩 나열
+		let currentConstIndex = -1; // 현재 선택된 별자리 인덱스
+
+		// 별자리 이름을 8개씩 나열 (CSS Grid로 처리됨)
 		c_ConstName_HSort.forEach((name, index) => {
 			const div = document.createElement('div');
 			div.textContent = name;
@@ -90,39 +131,54 @@
 			constellationList.appendChild(div);
 		});
 
-			function showImages(index) {
-				imageContainer.innerHTML = `
+		// 이미지 경로를 생성하는 헬퍼 함수
+		function getImagePath(type, index) {
+			const korName = c_ConstName_HSort[index];
+			const abbrName = c_ConstNameAbbr_HSort[index];
+
+			if (type === 'SVG') {
+				// SVG 파일 경로 (디렉토리나 파일명이 다르다면 수정해 주세요)
+				return `../z90_images/i24_constellation/02.SVG/별바라기_성도_${korName}자리.svg`;
+			} else if (type === 'PNG') {
+				return `../z90_images/i24_constellation/01.PNG/별바라기_성도_${korName}자리.png`;
+			} else if (type === 'JPG') {
+				return `../z90_images/i24_constellation/별바라기_성도_${korName}자리.jpg`;
+			} else if (type === 'IAU') {
+				return `../z90_images/i24_constellation/IAU_constellation/${abbrName}.gif`;
+			}
+		}
+
+		// 별자리를 클릭했을 때 호출
+		function showImages(index) {
+			currentConstIndex = index;
+			imageControls.style.display = 'block'; // 라디오 버튼 활성화 표시
+			updateImages(); // 현재 설정된 라디오 버튼 상태에 맞게 이미지 로드
+		}
+
+		// 라디오 버튼이 변경되거나 별자리가 선택될 때 이미지 갱신
+		function updateImages() {
+			if (currentConstIndex === -1) return; // 선택된 별자리가 없으면 무시
+
+			const leftType = document.querySelector('input[name="leftType"]:checked').value;
+			const rightType = document.querySelector('input[name="rightType"]:checked').value;
+
+			const leftSrc = getImagePath(leftType, currentConstIndex);
+			const rightSrc = getImagePath(rightType, currentConstIndex);
+
+			imageContainer.innerHTML = `
             <table>
                 <tr>
                     <td width="50%">
-                        <img src="../z90_images/i24_constellation/별바라기_성도_${c_ConstName_HSort[index]}자리.jpg"
-                         	 alt="${c_ConstName_HSort[index]}" class="width100">
+                        <img src="${leftSrc}" alt="${leftType} 이미지" class="width100">
                     </td>
                     <td width="50%">
-                        <img src="../z90_images/i24_constellation/IAU_constellation/${c_ConstNameAbbr_HSort[index]}.gif"
-                         	 alt="${c_ConstNameAbbr_HSort[index]}" class="width100">
+                        <img src="${rightSrc}" alt="${rightType} 이미지" class="width100">
                     </td>
                 </tr>
             </table>
-        `;
-
+          `;
 		}
 	</script>
-
-<!--
-	<table>
-		<tr>
-			<td width="50%">
-				<img src="../z90_images/i24_constellation/별바라기_성도_양자리.jpg"
-					 class="width100">
-			</td>
-			<td>
-				<img src="../z90_images/i24_constellation/IAU_constellation/ari.gif"
-					 class="width100">
-			</td>
-		</tr>
-	</table>
--->
 
 	<h3>참고: 추가 작업할 것</h3>
 	<ul class="sf_std">
@@ -143,7 +199,6 @@
 
 	<h3>참고: (2026.04 아마도) 프로그램 작업 완료된 것 </h3>
 	<ul class="sf_std">
-		<li></li>
 		<li>컴퍼스 별자리 모양선 추가해야 함 </li>
 		<li>소스에서 볼것: 궁수자리 베타2는 정보는 있는데, 화면에 표시 안됨. 2676-c1, 2656-b2</li>
 		<li>현미경: 별자리 모양선 수정. 위쪽이 접안부, 아래쪽 별이 많은 곳이 대상을 놓는 곳</li>
@@ -177,9 +232,8 @@
 	</ul>
 
 	<hr>
-    <p align="center"><a href="https://starflower.info">별바라기 홈</a>&emsp;최초 작성: 2024년 11월 17일
-    </p>
-
+	<p align="center"><a href="https://starflower.info">별바라기 홈</a>&emsp;최초 작성: 2024년 11월 17일
+	</p>
 
 </div>
 </body>

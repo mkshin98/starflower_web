@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../z90_images/favicon/favicon-32.png">
+<link rel="apple-touch-icon" href="../z90_images/favicon/favicon-180.png">
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYLQS1BKV9"></script>
 	<script>
@@ -44,7 +47,7 @@
 		// 1. 변수 설정
 		// 하드코딩하거나, Date 객체를 사용해 현재 날짜를 동적으로 가져올 수 있습니다.
 		const year = 2026;
-		const month_int = 7;
+		const month_int = 11;
 		const month = String(month_int).padStart(2, '0'); // 한 자리 월일 경우 앞에 '0'을 붙여 '05' 형태로 변환
 
 		/*
@@ -60,28 +63,32 @@
         <div class="div_bg_max700">
             <h2>${year}년 ${month_int}월의 별하늘</h2>
             <ul class="sf_std">
-               <li>저녁에 은하수가 꽤 높이 올라 오며, 자정쯤엔 <span class="blue-bold-text">안드로메다 은하</span>도 관측 가능하다.</li>
-               <li>${month_int}월 17일 저녁 서쪽 하늘에서 초승달과 금성이 함께 보이는 예쁜 모습이 예상된다.</li>
-               <li>${month_int}월 11~12일 새벽에는 그믐달, 화성, 좀생이별의 예쁜 모습이 예상된다. 토성은 조금 멀리 있다.</li>
+               <li>여름/가을 별자리를 함께 보기 좋은 시기이다.</li>
+               <li>저녁에는 궁수, 독수리, 백조, 카시오페이아로 이어지는 멋진 은하수를 즐길 수 있다. </li>
+               <li>소형 쌍안경으로 안드로메다 은하, M45, 이중성단 등의 멋진 모습을 볼 수 있다.</li>
+               <li>2일 새벽에는 달과 벌집 성단이 가까워진다.</li>
+               <li>3일 새벽 0시 30분에 달이 뜨며, 달과 목성, 화성, 레굴루스가 가까워진다.</li>
+               <li>7일 새벽 5시 30분 이후 달과 금성, 스피카가 만들어내는 아름다운 모습을 볼 수 있다. (월출: 약 4시 50분, 금성출: 약 05시 25분)</li>
+               <li>24~25일 새벽에는 보름이 지난 달과 플레이아데스가 가까이 위치한다. </li>
                <li><a href="../z11_help/help_13_allskymap.html" target="_blank">별하늘 성도 도움말</a> 참조</li>
             </ul>
 
             <h3>저녁의 별하늘</h3>
             <div class="width100_left_margin_image">
                <a href="../z90_images/i25_starlit_tonight/00_별하늘성도_대전_${year}-${month}-15_저녁.jpg"
-                  download="00_별하늘_대전_${year}-${month}-15_저녁.jpg"
+                  download="00_별하늘_대전_${year}-${month}-15_저녁.png"
                   onclick="if(!confirm('별하늘 성도를 다운로드하시겠습니까?')) { event.preventDefault(); }">
-                  <img src="../z90_images/i25_starlit_tonight/00_별하늘성도_대전_${year}-${month}-15_저녁.jpg"
+                  <img src="../z90_images/i25_starlit_tonight/00_별하늘성도_대전_${year}-${month}-15_저녁.png"
                       width="100%" height="100%" alt="${year}년 ${month_int}월 별하늘 성도">
                </a>
             </div>
 
             <h3>새벽의 별하늘</h3>
             <div class="width100_left_margin_image">
-               <a href="../z90_images/i25_starlit_tonight/00_별하늘성도_대전_${year}-${month}-15_새벽.jpg"
+               <a href="../z90_images/i25_starlit_tonight/00_별하늘성도_대전_${year}-${month}-15_새벽.png"
                   download="00_별하늘_대전_${year}-${month}-15_새벽.jpg"
                   onclick="if(!confirm('별하늘 성도를 다운로드하시겠습니까?')) { event.preventDefault(); }">
-                  <img src="../z90_images/i25_starlit_tonight/00_별하늘성도_대전_${year}-${month}-15_새벽.jpg"
+                  <img src="../z90_images/i25_starlit_tonight/00_별하늘성도_대전_${year}-${month}-15_새벽.png"
                       width="100%" height="100%" alt="${year}년 ${month_int}월 별하늘 성도">
                </a>
             </div>

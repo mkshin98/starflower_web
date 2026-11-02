@@ -10,9 +10,13 @@ a:hover   { color: blue;  text-decoration: underline;}
 	font-weight: bold;
 }
 
+
 .red-bold-text {
 	color: #FE2E64;
 	font-weight: bold;
+}
+.red-text {
+	color: #FE2E64;
 }
 
 
