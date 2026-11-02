@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../z90_images/favicon/favicon-32.png">
+<link rel="apple-touch-icon" href="../z90_images/favicon/favicon-180.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>인쇄 / 비트맵 저장</title>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-MK63WGMZ');</script>
+	<!-- End Google Tag Manager -->
+
+	<link rel="stylesheet" href="../sf_css/sf2020_style.css">
+	<script src="../sf_css/sf2020_common.js"></script>
+</head>
+
+<body class="body_sf2020" >
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MK63WGMZ"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="div_bg_max700">
+	<a href="../index.html">별바라기 홈</a> > <a href="help_00_index.html">도움말</a><br>
+
+<h2>인쇄 / 비트맵 저장</h2>
+
+<p>
+	이제까지 여러분은 온 하늘 성도나 월별 성도, 계절별 성도 등은 많이 접해 보았을 것이다.
+	그러나 내가 원하는 별자리나 행성, 혜성을 중심으로 한 마음에 꼭 드는 성도를 구하기란 쉽지 않았으리라 생각된다.
+	별바라기의 인쇄 기능은 바로 여러분이 원하는 성도를 크기와 위치, 간격에 따라 손쉽게 얻을 수 있는 도깨비 방망이가 되어줄 것이다.
+</p>
+
+<h3><b>주의 사항</b></h3>
+<p>
+	별바라기는 A4 용지의 가로 방향 인쇄를 기본으로 한다. 용지 크기는 변경 가능하지만, 환경 설정 윈도에서는 변경된 종이 크기를 제대로 보여주지 못할 수도 있다.
+</p>
+
+<h3><b>인쇄/비트맵 환경 설정 윈도</b></h3>
+
+	<table class="noborder">
+	<tr>
+		<td class="noborder">
+			<img src="../z90_images/i11_help/help12_dlg_print.gif" style="max-width: 100%;"
+			     onclick="simpleLightbox('../z90_images/i11_help/help12_dlg_print.gif');"	>
+		</td>
+	</tr>
+	<tr>
+		<td class="noborder">인쇄 선택사항</td>
+	</tr>
+	</table>
+
+<p>
+	별바라기에서는 화면에 보여지는 성도를 보이는 모습 그대로 인쇄할 수 있다. 인쇄될 성도의 환경 설정은 [성도 인쇄/비트맵 저장 환경 설정...] 메뉴에서 할 수 있다.
+	인쇄 환경 설정의 항목은 각각 다음과 같은 의미가 있다.
+</p>
+<ul class="nomarker">
+	<li><b>성도 크기</b>: 높이와 넓이로 표시된다.</li>
+	<li><b>성도 중심 위치</b>: 성도의 중심 위치로 프린트 가능 영역의 왼쪽 위에서부터 오른쪽으로 갈수록 X축 + 방향이며, 아래로 내려올수록 Y축 + 방향이다.</li>
+	<li><b>범례</b>: 범례를 표시할지 안 할지 결정. 범례는 성도의 아래쪽에 인쇄된다.</li>
+	<li><b>프린트 색상</b>: 컬러 또는 흑백 프린트를 지정. 프린터가 흑백일 때 컬러 프린트를 지정하면 일부 색상이 프린트 되지 않는 경우가 발생한다.</li>
+	<li><b>머리말</b>: 성도의 위에 표시되는 글</li>
+	<li><b>별의 크기</b>: 프린트 되는 별의 크기를 결정하는 변수는 기준크기, 기준등급, 계수(Young의 계수) 세 개이며, 별의 반지름 계산 공식은 아래와 같다.<br>
+		&emsp;별의 반지름 = 기준크기 * pow(10, Young의 계수 * (기준등급 - 별의 등급))<br>
+		위의 공식은 기준등급인 별의 크기를 기준크기로 하고 Young의 계수를 비례 상수로 해서 별의 크기를 정하라는 뜻이다.
+		따라서 기준크기를 크게 하면 전체적으로 별의 크기가 커지며, Young의 계수를 크게 하면 밝은 별이 더욱 커진다.</li>
+	<li><b>별-모양선 간격</b>: 프린트 시 별과 모양선의 간격을 가리킨다. 단위는 1/1440 인치이다. 별과 모양선의 간격이 적당히 떨어져 있는 것이 보기 좋다.</li>
+</ul>
+
+<p>
+	화면에 보이는 성도와 인쇄된 성도의 가로 세로 비율은 다르다. 물론 인쇄되는 성도의 크기를 조절하여 화면에 보이는 영역과 똑같이 인쇄할 수도 있다.
+	그러나 화면의 성도와 인쇄되는 성도의 가로 세로 비율을 똑같이 하는 것은 매우 힘든 일이다.
+</p>
+<p>
+	별바라기에서 인쇄시 기준이 되는 것은 성도의 가로 시야와 가로 크기이다. 화면의 가로 시야와 프린트 된 성도의 가로 시야는 같으며,
+	프린트된 성도의 세로 시야는 성도의 세로 크기에 의해 결정된다.
+</p>
+<p>
+	프린트 되는 글자의 크기는 화면에 보이는 비율 그대로 프린트 된다. 만약 화면 성도의 가로 크기를 반으로 줄여서 프린트하면, 폰트의 크기가 두 배가 되어 프린트 된다.
+	성도의 가로 크기는 반으로 줄었지만 성도의 시야와 성도의 폰트는 변하지 않았기 때문에 폰트는 성도 크기에 비해 2배 커진 셈이 되기 때문이다.
+	이때는 [선택사항][폰트...] 메뉴를 선택하여 글자의 크기를 성도의 크기에 맞게 줄이면 된다.
+</p>
+
+<h3><b>비트맵 저장</b></h3>
+<p>
+	별바라기에서 보이는 성도는 비트맵으로 저장할 수도 있다. 비트맵 저장 환경 설정은 [성도 인쇄/비트맵 저장 환경 설정...] 메뉴에서 할 수 있다.
+</p>
+
+<h3><b>Copyright</b></h3>
+<p>
+	별바라기의 저작권은 대한민국의 저작권법과 국제 저작권 조약에 의하여 보호됩니다. 별바라기를 이용하여 인쇄하거나 비트맵으로 저장된 성도는 상업적으로 이용할 수 없습니다.
+	무료 배포, 포털사이트 동호회 게시물에는 자유롭게 사용할 수 있으며 이때에는 반드시 '성도작성: 별바라기' 문구를 명시해야 합니다.
+	(<a href="../z10_basic_info/copyright.html">저작권</a> 참조)
+</p>
+
+<hr>
+    <p align="center"><a href="https://starflower.info">별바라기 홈</a>&emsp;최초 작성: 2026년 11월 01일, 최종 변경: 2026년 11월 01일
+    </p>
+
+</div>
+</body>
+</html>

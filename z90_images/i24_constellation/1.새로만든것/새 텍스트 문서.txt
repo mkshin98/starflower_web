@@ -1,0 +1,14 @@
+
+그물눈 그림: 아래 그림 참조해서 그림
+   reticulm_1763_image.png
+   reticulum_lacaille_reticle_small.png
+
+void CBitmapConst_FView::OnSelchangeCombo_CircularMapType()
+   각 유형 별로 정리되는 곳이다.
+   특히, 4.5등급까지만 보이게 하려고 하는데, pDoc->CenterOrFieldChanged() 에서 등급을 마음대로 바꾸었다.
+
+--- 2026-06 ----
+거문고: 행성상 성운 크기를 줄임
+백조/고니: 6888 추가됨. 콜드웰, 초승달 성운 이름도 써야 할 듯....
+페가수스: 7814 추가. 콜드웰
+큰곰: 은하크기

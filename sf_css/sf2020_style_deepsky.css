@@ -1,0 +1,61 @@
+@charset "EUC-KR";
+
+/* 호주 후기에서 사용 */
+/* object-container 안에 플로팅된 요소를 포함하도록 */
+.deepsky-container-for-obsrv {
+	overflow: auto; /* 또는 display: flow-root; */
+	padding-bottom: 15px; /* 컨테이너 하단 여백 추가 (선택 사항) */
+}
+
+.deepsky-container-for-obsrv img {
+	float: right; /* 이미지를 왼쪽으로 띄워! */
+	margin-right: 20px; /* 이미지 오른쪽에 간격 줘서 텍스트랑 안 붙게 */
+	margin-bottom: 10px; /* 이미지 아래쪽 텍스트와 살짝 떨어지게 */
+	max-width: 150px; /* 이미지 크기 너무 크지 않게 적절히 조절 (예시) */
+	height: auto;
+}
+
+.object-info {
+	/* float 옆에 자연스럽게 내용이 흐르도록 특별한 설정 필요 없음 */
+	/* 다만, infoDiv가 너무 이미지에 딱 붙어 보이면 padding-left를 살짝 줄 수 있지만,
+       img에 margin-right를 줬으니 괜찮을 거야. */
+}
+
+/* ????***** 어디서 사용하나? */
+.deepsky-container-forPC {
+	display: flex; /* Flexbox를 사용하여 한 줄로 배치 */
+	align-items: center; /* 수직 정렬을 중앙으로 설정 */
+}
+.deepsky-container-forPC img {
+	width: 400px; /* 이미지 크기 조정 */
+	height: auto;
+	margin-right: 20px;
+}
+
+/* 호주 사전 준비에서 사용 */
+.deepsky-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+.deepsky-container img {
+	width: 200px; /* 이미지 크기 조정 */
+	height: auto;
+	margin-right: 20px;
+}
+.deepsky-container-forPC {
+	display: flex; /* Flexbox를 사용하여 한 줄로 배치 */
+	align-items: center; /* 수직 정렬을 중앙으로 설정 */
+}
+.deepsky-container-forPC img {
+	width: 400px; /* 이미지 크기 조정 */
+	height: auto;
+	margin-right: 20px;
+}
+.deepsky-info {
+	display: flex;
+	flex-direction: column;
+}
+.large-font {
+	font-size: 16px; /* 원하는 크기로 조정 */
+}
