@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../z90_images/favicon/favicon-32.png">
+<link rel="apple-touch-icon" href="../z90_images/favicon/favicon-180.png">
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYLQS1BKV9"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-PYLQS1BKV9');
+	</script>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-MK63WGMZ');</script>
+	<!-- End Google Tag Manager -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMG: 1000 개의 은하 목록</title>
+<link rel="stylesheet" href="cmg1000.css?v=20261103d">
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MK63WGMZ"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-wrap">
+      <div class="brand-logo">★</div>
+      <div>
+        <div class="brand-title">CMG: 1000 개의 은하 목록</div>
+        <div class="brand-sub">Catalogue of One Thousand Galaxies (Bodifee &amp; Berger, 2010)</div>
+      </div>
+    </div>
+    <div class="header-controls">
+      <!-- 은하 목록 선택 (괄호 안 개수는 cmg1000.js가 채움) -->
+      <select id="catalogSelect" class="select-ctrl catalog-select" title="은하 목록 선택" aria-label="은하 목록 선택">
+        <option value="ALL" data-label="전체 은하">전체 은하</option>
+        <option value="Messier" data-label="메시에 (Messier)">메시에 (Messier)</option>
+        <option value="Caldwell" data-label="콜드웰 (Caldwell)">콜드웰 (Caldwell)</option>
+        <option value="OMeara" data-label="멋진 NGC / 오마라">멋진 NGC / 오마라</option>
+        <option value="Challenge" data-label="도전목록 (Arp·학술·퀘이사)">도전목록 (Arp·학술·퀘이사)</option>
+        <option value="Beautiful50" data-label="✨ 아름다운 은하 50선" selected>✨ 아름다운 은하 50선</option>
+        <option value="Brightest50" data-label="🌟 밝은 은하 50선">🌟 밝은 은하 50선</option>
+        <option value="Largest10" data-label="📏 큰 은하 10선">📏 큰 은하 10선</option>
+        <option value="Smallest10" data-label="🔬 작은 은하 10선">🔬 작은 은하 10선</option>
+        <option value="NamedPersons" data-label="🏛️ 인물 헌정 은하">🏛️ 인물 헌정 은하</option>
+        <option value="BOOKMARK" data-label="⭐ 내 관측 북마크">⭐ 내 관측 북마크</option>
+      </select>
+      <button id="openGuideBtn" class="btn btn-primary" type="button">📖 카탈로그 해설 (소개·명명 규칙·통계·목록)</button>
+    </div>
+  </div>
+</header>
+
+<main class="main-container">
+
+  <!-- Search & Facet Filter Bar -->
+  <section class="filter-bar" aria-label="검색 및 상세 필터">
+    <div class="search-input-wrap">
+      <input type="search" id="searchInput" class="search-input" aria-label="은하 검색" placeholder="🔍 검색: NGC/M/C/IC/Arp 번호, 한글 이름·뜻, 라틴어 학명, 별자리, 어원 키워드 (예: M31, 고래, 올빼미, 칸트, SN2008D)...">
+      <button id="clearSearchBtn" class="clear-search-btn" type="button" title="검색어 지우기" aria-label="검색어 지우기">✕</button>
+    </div>
+    <div style="display:flex; gap:0.4rem;">
+      <button id="viewCardBtn" class="btn btn-primary" type="button" title="카드 뷰">🗂️ 카드 뷰</button>
+      <button id="viewTableBtn" class="btn" type="button" title="CMG 1~10열 표준 표 뷰">📊 10열 표 뷰</button>
+    </div>
+  </section>
+
+  <!-- 원서 목록 안내 (특별 목록을 고르면 표시) -->
+  <div id="listInfo" class="list-info" hidden></div>
+
+  <!-- Status & Pagination Top -->
+  <div class="status-bar">
+    <div id="resultSummaryText">총 <strong>1,000</strong>개의 은하가 검색되었습니다.</div>
+    <div class="pagination-wrap" id="topPagination"></div>
+  </div>
+
+  <!-- Content Area (cards / 10-column table) -->
+  <div id="catalogContent"></div>
+
+  <!-- Pagination Bottom -->
+  <div class="status-bar" style="margin-top: 1.25rem;">
+    <div id="bottomSummaryText"></div>
+    <div class="pagination-wrap" id="bottomPagination"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p><strong>📚 출처</strong> — 은하 학명(제9열), 해설(제10열), 표 자료와 카탈로그 해설·통계·특별 목록은 다음 책에 근거합니다:<br>
+      Gerard Bodifee &amp; Michel Berger, <em>CMG, A Catalogue of One Thousand Galaxies</em>, Vol. I: Names and data, Urania v.z.w., Hove, 2010. © Gerard Bodifee, Michel Berger. All rights reserved.</p>
+    <p>원서의 자료는 Hyperleda, NED, <em>Uranometria 2000.0</em>, <em>The Carnegie Atlas of Galaxies</em>, <em>The de Vaucouleurs Atlas of Galaxies</em>, David Bishop의 <em>Bright Supernovae</em> 등에서 모은 것입니다(자세한 목록은 ‘카탈로그 해설 › 7. 참고문헌’).</p>
+    <p>은하 사진은 좌표로 CDS hips2fits 서비스(Strasbourg astronomical Data Center)에서 받아 보여 줍니다: DSS2 컬러 — Digitized Sky Survey, © AURA/STScI (POSS-II, UK Schmidt Telescope 사진 기반) · 고해상도 — DESI Legacy Imaging Surveys DR10.</p>
+    <p>한글 번역·요약과 별자리 한글 표기는 별바라기(StarFlower)가 작성했습니다. CMG의 라틴어 이름은 국제천문연맹(IAU)이 승인한 공식 명칭이 아닙니다.</p>
+  </div>
+  <p class="site-footer-home"><a href="https://starflower.info">별바라기 홈</a>&emsp;최종 변경: 2026년 11월 3일</p>
+</footer>
+
+<!-- Galaxy Detail Modal (Full 1-10 Columns) -->
+<div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
+  <div class="modal-content" id="detailModalContent"></div>
+</div>
+
+<!-- 2_Introduction.pdf 카탈로그 해설 (소개·명명 규칙·표 해설·라틴어·통계·특별 목록·참고문헌) -->
+<div class="modal-backdrop" id="guideModal" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div>
+        <h2 id="guideModalTitle" style="font-size:1.25rem; font-weight:800;">📖 『CMG: 1000대 은하 카탈로그』 해설</h2>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.2rem;">출처: <code>2_Introduction.pdf</code> — Gerard Bodifee &amp; Michel Berger, <em>CMG, A Catalogue of One Thousand Galaxies</em>, Vol. I (Urania, 2010), pp. 5–30. 아래 내용은 원서를 한글로 요약·정리한 것이며, 각 탭 아래에 원서의 해당 장과 쪽수를 밝혔습니다. 원문의 저작권은 저자에게 있습니다(© Gerard Bodifee, Michel Berger).</p>
+      </div>
+      <button class="modal-close" id="closeGuideBtn" type="button">✕ 닫기</button>
+    </div>
+
+    <nav class="guide-tabs" role="tablist" aria-label="해설 항목">
+      <button class="guide-tab active" type="button" role="tab" data-guide="intro">1. 소개</button>
+      <button class="guide-tab" type="button" role="tab" data-guide="naming">2. 명명 규칙</button>
+      <button class="guide-tab" type="button" role="tab" data-guide="columns">3. 표(1~10열) 해설</button>
+      <button class="guide-tab" type="button" role="tab" data-guide="latin">4. 라틴어·발음</button>
+      <button class="guide-tab" type="button" role="tab" data-guide="stats">5. 통계</button>
+      <button class="guide-tab" type="button" role="tab" data-guide="lists">6. 특별 목록</button>
+      <button class="guide-tab" type="button" role="tab" data-guide="refs">7. 참고문헌</button>
+    </nav>
+
+    <!-- 1. 소개 -->
+    <section class="guide-panel active" data-guide-panel="intro">
+      <blockquote class="guide-quote">“우리는 존재와 이름을 갖기 전에는 아무것도, 아무것도 아닌 것보다 못한 존재다.”<br><span>— 찰스 램, 『꿈속의 아이들』(1823)</span></blockquote>
+      <h3>은하, 우주의 먼지 알갱이</h3>
+      <p>은하는 우리가 우주라 부르는 거대한 먼지 구름 속의 먼지 알갱이와 같습니다. 현대 망원경으로는 수십억 개를 볼 수 있습니다. 먼 은하는 희미한 빛의 점으로만 보이지만, 가까운 은하는 복잡한 세부를 드러냅니다. 20세기 이전에는 별들 사이에 보이는 희미한 ‘성운’으로만 알려졌고, 대형 반사망원경이 만들어진 뒤에야 그 엄청난 크기와 거리를 잴 수 있었습니다.</p>
+      <p>은하는 수십억 개의 별, 별의 잔해, 성간 기체와 먼지, 그리고 정체를 모르는 ‘암흑물질’이 모인 거대한 섬입니다. 우리가 사는 우리은하는 지름 약 10만 광년의 원반으로 2천억~3천억 개의 별을 품고 있으며, 태양은 중심에서 2만 8천 광년 떨어진 곳을 돌고 있습니다.</p>
+      <h3>은하 목록의 역사</h3>
+      <ul>
+        <li><strong>메시에 목록(1781)</strong>: 프랑스 천문학자 샤를 메시에가 만든 110개 천체 목록. 그중 40개가 나중에 은하로 밝혀졌습니다.</li>
+        <li><strong>NGC(1888)·IC</strong>: 허셜 부자 등의 목록을 바탕으로 J.L.E. 드라이어가 7,840개 천체의 NGC를, 이어 5,386개를 더한 두 권의 IC를 펴냈습니다. 오늘날에도 메시에 번호가 없는 천체는 대개 NGC 번호로 부릅니다.</li>
+        <li><strong>그 밖의 목록</strong>: CGCG, MCG, UGC, ESO, PGC 같은 전천 목록과 특이 은하(Arp), 상호작용 은하(보론초프-벨랴미노프), 저표면밝기 은하(DDO), 조밀 은하(츠비키) 목록, 그리고 아마추어용인 콜드웰 목록(패트릭 무어), 『Hidden Treasures』(오마라), 베넷 목록 등이 있습니다.</li>
+      </ul>
+      <h3>번호는 많지만 이름은 없다</h3>
+      <p>밝은 은하는 여러 목록에 실려 번호가 여러 개입니다. 예컨대 M109는 NGC 3992, UGC 6937, CGCG 269-023, MCG +09-20-044, PGC 37617로도 불립니다. 하지만 이름은 거의 없습니다. 별에는 이름이 있지만 은하에는 없습니다. 바람개비 은하(M33), 해바라기 은하(M63), 생쥐(NGC 4676A/B), 바너드 은하, 마젤란은하처럼 예외가 있을 뿐이며, 이런 관용명도 국제천문연맹(IAU)이 승인한 공식 이름은 아닙니다.</p>
+      <h3>왜 이름이 필요한가</h3>
+      <p>이름을 붙인다는 것은 그것을 인간이 아는 실재의 일부로 받아들인다는 뜻입니다. 생물학은 아무리 작고 눈에 띄지 않는 종에도 이름을 붙이고, 천문학은 하찮은 돌덩이에 불과한 소행성 수천 개에도 이름을 붙였습니다. 그러나 별과 행성과 사람이 존재하는 거대한 섬인 은하는 대부분 이름 없이 남아 있습니다.</p>
+      <h3>이 목록의 목적</h3>
+      <p><strong>CMG</strong>(M은 1000을 뜻하는 로마 숫자)는 눈에 띄는 은하 1000개에 걸맞은 이름을 붙이려는 시도입니다. 이를 위해 명명 체계를 마련했고, 모든 은하가 그 규칙에 따라 특징을 담은 이름을 받았습니다. 이 이름들은 IAU의 승인을 받은 것이 아니며 공식 지위가 없습니다. 존재 이유는 외부은하 천문학의 글을 생생하게 만드는 데 있습니다. 두 번째 목적은 아마추어 천문가를 위해 가장 밝고 흥미로운 은하의 기본 자료(겉모습, 물리적 특성, 형태)를 제공하는 것입니다.</p>
+      <h3>수록 기준</h3>
+      <ul>
+        <li><strong>안시등급</strong>: 11.2등급보다 밝은 은하는 모두 포함</li>
+        <li><strong>겉보기 지름</strong>: 광학적 겉보기 지름이 5′보다 큰 은하는 모두 포함</li>
+        <li><strong>가까움</strong>: 국부은하군 은하 대부분 포함</li>
+        <li><strong>대중적 목록</strong>: 메시에·콜드웰 목록의 은하 전부와 NGC/IC의 상당수 포함</li>
+        <li><strong>흥미로운 형태</strong>: 형태가 특히 눈에 띄는 은하</li>
+        <li><strong>상호작용</strong>: 상호작용하는 은하 쌍과 작은 조밀 은하군 다수</li>
+        <li><strong>역사적 의미</strong>: 외부은하 연구에서 중요한 역할을 한 은하</li>
+      </ul>
+      <h3>배열 순서</h3>
+      <p>NGC 은하가 먼저(1~823번), 다음이 IC 은하(824~915번), 마지막으로 NGC/IC에 없는 은하(916~1000번)입니다. 마지막 무리는 UGC 번호순으로, UGC에도 없으면 MCG·PGC·ESO 등의 번호순으로 놓았습니다. 조각가 왜소은하처럼 잘 알려진 이름으로 실은 은하도 있습니다.</p>
+      <p class="guide-source">📚 출처: Gerard Bodifee &amp; Michel Berger, <em>CMG, A Catalogue of One Thousand Galaxies</em>, Vol. I: Names and data, Urania v.z.w., Hove, 2010, “Introduction”, pp. 5–7. — 한글 요약: 별바라기(StarFlower).</p>
+    </section>
+
+    <!-- 2. 명명 규칙 -->
+    <section class="guide-panel" data-guide-panel="naming" hidden>
+      <blockquote class="guide-quote">“이름 짓기가 성공하려면 우리의 변덕이 아니라 자연의 명령에 따라 사물에 이름을 붙여야 한다.”<br><span>— 플라톤, 『크라틸로스』 387d</span></blockquote>
+      <blockquote class="guide-quote">“이름이 무슨 상관이랴? 장미라 부르는 것은 다른 이름으로 불러도 똑같이 향기로울 텐데.”<br><span>— 셰익스피어, 『로미오와 줄리엣』 2막 2장</span></blockquote>
+      <h3>1. 일반 원칙</h3>
+      <p>생물학·고생물학·천문학 등에서 널리 쓰이는 <strong>이명법(二名法)</strong> 전통(Stearn, 1967)을 따릅니다. 모든 은하는 고유한 이름을 하나씩 가지며, 이름은 묘사적이거나 의미가 있고, 듣기 좋고 쓰기 쉽습니다.</p>
+      <h3>2. 이름의 구조</h3>
+      <ul>
+        <li><strong>기술어(descriptor)</strong>: 앞부분. 은하를 특징짓습니다.</li>
+        <li><strong>위치어(localisator)</strong>: 뒷부분. 은하가 있는 별자리 이름을 <strong>속격</strong>(‘~의’)으로 씁니다. 별자리 경계는 1930년 IAU가 채택한 것을 따릅니다.</li>
+      </ul>
+      <p>보통 두 단어지만, 기술어가 두 단어이거나 별자리 이름이 두 단어이면 세 단어가 됩니다. 예: CMG 436·437 <em>Antenna Borealis Corvi</em>·<em>Antenna Australis Corvi</em>, CMG 433 <em>Symmetria Ursae Majoris</em>.</p>
+      <h3>3. 언어</h3>
+      <p>모든 이름은 라틴어이거나 라틴어화한 그리스어이며, 확립된 문법·철자 규칙에 따라 옮겼습니다. 모든 이름에 강세를 표시했습니다. 라틴어를 고른 이유는 세 가지입니다.</p>
+      <ol>
+        <li>오늘날에도 생물학·고생물학·의학·행성 지명 등에서 쓰이는 오래된 과학 전통을 따르기 위해</li>
+        <li>문화 간 소통에서 중립적인 언어를 쓰기 위해. 약 1,500년 전 모국어 화자를 잃은 라틴어는 현대어와 경쟁하지 않고, 20세기 넘게 큰 변화 없이 쓰여 왔습니다. 누구의 언어도 아니기에 모두의 언어가 되었습니다.</li>
+        <li>현대 과학의 뿌리가 고대 문화에 있음을 상기하기 위해</li>
+      </ol>
+      <h3>4. 성(gender) 규칙</h3>
+      <p>기술어의 문법적 성은 은하의 내부 ‘해부 구조’ 또는 형태 유형으로 정합니다.</p>
+      <table class="guide-table">
+        <thead><tr><th style="width:38%;">기준</th><th>성</th></tr></thead>
+        <tbody>
+          <tr><td>내부 구조 변형(variety)이 <code>r</code>(안쪽 고리), <code>l</code>(안쪽 렌즈), <code>rl</code></td><td><strong>여성형</strong> (예: -a, -is, -ix)</td></tr>
+          <tr><td>내부 구조 변형이 <code>s</code>(안쪽 나선 구조)</td><td><strong>남성형</strong> (예: -us, -er, -or)</td></tr>
+          <tr><td>변형이 <code>rs</code>(중간형)이거나 불확실·미기재 → 형태 지수 <em>T</em>로 판정</td><td><em>T</em> ≤ 1.5 이면 <strong>여성형</strong>, <em>T</em> &gt; 1.5 이면 <strong>남성형 또는 중성형</strong></td></tr>
+          <tr><td>예외: 은하가 어떤 사물을 닮아 그 사물의 이름을 딴 경우</td><td>그 라틴어·그리스어 명사의 성을 따름</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>내부 구조 변형은 드 보쿨뢰르 개정 허블-샌디지 분류(VRHS)의 변수로, 주로 Buta 등(2007) 또는 NED의 값을 썼습니다. 이 값은 이 목록에 실린 RC3.9 값과 다를 수 있습니다.</li>
+        <li><em>T</em>는 RC2(de Vaucouleurs 등, 1976)에서 정의한 수치 형태 코드로, Hyperleda 값을 썼습니다. E형은 −5~−3, S0형은 −3~0, 나선 Sa~Sd는 1~8, Sm은 9, Irr은 10입니다.</li>
+        <li>이름에 개성을 주려고 여성형·남성형을 주로 썼고 중성형은 드물게 썼습니다. 이 성 구분의 물리적 의미는 매우 제한적이며, 목록 편찬 당시 형태 분류의 상태를 반영한 다소 자의적인 규칙입니다.</li>
+      </ul>
+      <p class="guide-source">📚 출처: Gerard Bodifee &amp; Michel Berger, <em>CMG, A Catalogue of One Thousand Galaxies</em>, Vol. I: Names and data, Urania v.z.w., Hove, 2010, “Rules of Nomenclature”, pp. 8–9. — 한글 요약: 별바라기(StarFlower).</p>
+    </section>
+
+    <!-- 3. 표 해설 -->
+    <section class="guide-panel" data-guide-panel="columns" hidden>
+      <table class="guide-table">
+        <thead><tr><th style="width:80px;">열</th><th style="width:170px;">항목</th><th>내용 (출처)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>제1열</strong></td><td>No. (목록 번호)</td><td>NGC 번호순, 다음 IC 번호순, NGC/IC가 없으면 UGC 번호순, 이어서 ESO·MCG·기타 목록 번호순으로 매긴 CMG 번호.</td></tr>
+          <tr><td><strong>제2열</strong></td><td>식별 명칭</td><td>NGC/IC 번호를 먼저, 없으면 UGC·ESO·MCG 등의 번호. 메시에·콜드웰·Arp 번호는 항상 적었습니다. 오마라의 『Hidden Treasures』에 실린 은하는 ‘O'Meara 번호’로 표기하고, 전통적·대중적 고유명도 덧붙였습니다.</td></tr>
+          <tr><td><strong>제3열</strong></td><td>좌표·별자리·성도</td><td>
+            ① <strong>적도좌표</strong>(J2000.0): <code>Jhhmmss.ss±ddmmss.ss</code> (Hyperleda)<br>
+            ② <strong>은하좌표</strong>(IAU 1958): <code>Glll.lllll±bb.bbbbb</code>. 경도 0°는 은하 중심 방향(적경 17h 45.6m, 적위 −28° 56′), 북은하극은 적경 12h 51m 26s, 적위 +27° 07′ 43″<br>
+            ③ <strong>초은하좌표</strong>: <code>SGlll.lllll±bb.bbbbb</code>. 가까운 은하단들이 이루는 면이 초은하 적도이고, 경도 0°는 이 면과 은하 적도의 교점(은경 137.37°), 북초은하극은 l = 47.37°, b = 6.32°<br>
+            ④ <strong>별자리</strong>: 1930년 IAU 경계 기준<br>
+            ⑤ <strong>성도</strong>: <code>U</code> 『Uranometria 2000.0』 지도 번호(Tirion 등, 2001) · <code>H</code> 『The Hubble Atlas of Galaxies』 쪽(Sandage, 1961) · <code>C</code> 『The Carnegie Atlas of Galaxies』 패널 번호(Sandage·Bedke, 1994) · <code>V</code> 『de Vaucouleurs Atlas of Galaxies』 도판 번호(Buta 등, 2007)
+          </td></tr>
+          <tr><td><strong>제4열</strong></td><td>d<sub>max</sub> · d<sub>min</sub> · P.A. · i</td><td>
+            ① <strong>최대 겉보기 지름</strong>(분각)과 ② <strong>최소 겉보기 지름</strong>: 『Uranometria 2000.0』(Cragin·Bonanno, 2001), 없으면 NED. 대부분 DSS 영상을 눈으로 보고 잰 값이라 다른 목록과 다를 수 있습니다(RC3는 25.0 B등급/초각² 등광도선을 써서 눈에 보이는 범위보다 훨씬 크게 잽니다).<br>
+            ③ <strong>위치각</strong>: 장축이 북쪽(0°)에서 동쪽으로 이루는 각, 0°~180° (Hyperleda)<br>
+            ④ <strong>경사각</strong>: 은하의 극축과 시선 방향 사이의 각, 0°~90° (90°는 완전한 옆면) (Hyperleda)
+          </td></tr>
+          <tr><td><strong>제5열</strong></td><td>m<sub>vis</sub> · S.B. · B−V · M<sub>B</sub></td><td>
+            ① <strong>겉보기 안시등급</strong>: 표준 V밴드(545 nm 중심) 등급 (Uranometria, 없으면 NED)<br>
+            ② <strong>평균 표면밝기</strong>: 제곱분각당 안시등급. 보통 은하는 약 13.5, 가장 밝은 은하는 12.5 이하<br>
+            ③ <strong>색지수 B−V</strong>: B밴드(436 nm)와 V밴드의 등급 차. 은하 소광·경사·적색편이를 보정한 값 (Hyperleda)<br>
+            ④ <strong>청색 절대등급</strong>: 보정한 B등급과 거리 지수로 계산. 같은 총광도의 점광원을 10 pc에서 볼 때의 등급 (Hyperleda)
+          </td></tr>
+          <tr><td><strong>제6열</strong></td><td>분류·형태·소속</td><td>
+            ① <strong>허블-샌디지 분류(HS)</strong> — 『카네기 도감』(1994)<br>
+            ② <strong>RC3.9 형태 분류</strong> — NED 표준 표기<br>
+            ③ <strong>활동성·전파 유형</strong> — NED(원래 RC3.9)<br>
+            ④ <strong>나선팔 등급(AC)</strong> — Elmegreen &amp; Elmegreen (1987)<br>
+            ⑤ <strong>형태 코드 T</strong>(Hyperleda)와 <strong>광도 계급 LC</strong>(NED)<br>
+            ⑥ <strong>소속 은하단·은하군</strong> — Powell 등<br>
+            <em>자세한 분류 기호는 아래 표를 보세요.</em>
+          </td></tr>
+          <tr><td><strong>제7열</strong></td><td>z · v<sub>hc</sub> · v<sub>gc</sub> · D<sub>H</sub> · D</td><td>
+            ① <strong>적색편이 z</strong> ② <strong>태양 중심 시선속도</strong>(km/s) ③ <strong>은하 중심 시선속도</strong>(km/s) — 모두 NED<br>
+            ④ <strong>허블 흐름 거리 D<sub>H</sub></strong>(Mpc): 적색편이와 H₀ = 73 km/s/Mpc로 구한 거리 (1 Mpc = 10⁶ pc = 3.09×10²² m)<br>
+            ⑤ <strong>적색편이 독립 거리 D</strong>(Mpc, NED): 툴리-피셔 관계(21 cm 전파로 잰 회전 속도와 절대등급의 관계), 세페이드 주기-광도 관계, 적외선 표면밝기 요동(SBF), 적색거성가지 끝(TRGB), 가장 밝은 청색·적색 별, 행성상성운 광도 함수(PNLF) 등으로 측정
+          </td></tr>
+          <tr><td><strong>제8열</strong></td><td>지름 · 초신성</td><td>
+            ① <strong>실제 지름</strong>(kly, 1 kly = 10³ 광년 = 307 pc): 지름 = 0.948 × D × d<sub>max</sub>. 원반이 원형이라 가정하고 d<sub>max</sub>를 단축되지 않은 지름으로 봅니다. D가 없으면 D<sub>H</sub>를 씁니다. 거리와 겉보기 지름 모두 불확실해 근삿값입니다.<br>
+            ② <strong>초신성</strong>: 열 머리에 적힌 날짜(2010년 9월 23일)까지 이 은하에서 관측된 모든 초신성 (David Bishop, <em>Bright Supernovae</em>). SN + 발견 연도 + 한두 글자: 그해 첫 26개는 대문자 A~Z, 그다음부터는 소문자 두 글자 aa, ab, …
+          </td></tr>
+          <tr><td><strong>제9열</strong></td><td>고유 이름 · 번역</td><td>① 저자들이 붙인 이명법 이름(기술어 + 별자리 속격) ② 기술어의 번역</td></tr>
+          <tr><td><strong>제10열</strong></td><td>강세 · 해설</td><td>올바르게 발음하도록 강세를 먼저 표시하고, 이어서 이름의 뜻과 유래를 설명합니다.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>허블-샌디지(HS) 분류 기호</h3>
+      <table class="guide-table">
+        <thead><tr><th style="width:28%;">유형</th><th>표기와 뜻</th></tr></thead>
+        <tbody>
+          <tr><td>타원은하</td><td><code>En</code> — n은 납작함 지수, 0(둥긂)~7(극도로 납작함)</td></tr>
+          <tr><td>렌즈형 은하</td><td><code>S0<sub>a</sub>(n)</code> — a는 광도 분포 지수(1 매끈함, 2 매끈하지 않은 부분 있음, 3 먼지 흔적), n은 납작함 지수 0~9</td></tr>
+          <tr><td>나선은하</td><td><code>Tx(v)N</code> — T: S 보통 나선, SB 막대나선, RSB 바깥 고리가 있는 막대나선 / x: a, ab, b, bc, c, cd, d 순으로 중심팽대부가 작아지고 팔이 열림 / v: s(팔이 중심이나 막대 끝에서 시작), r(팔이 안쪽 고리에 접해 시작) / N: 광도 계급 I(밝은 초거성)~IV, V(희미한 왜소)</td></tr>
+          <tr><td>불규칙은하</td><td><code>Sm</code>, <code>SBm</code> 대마젤란은하형 · <code>Im</code> 소마젤란은하형</td></tr>
+          <tr><td>왜소은하</td><td><code>dE</code> 왜소 타원 · <code>dE,N</code> 핵이 있는 왜소 타원 · <code>Pec</code> 특이</td></tr>
+        </tbody>
+      </table>
+
+      <h3>RC3.9 (드 보쿨뢰르) 분류 기호</h3>
+      <table class="guide-table">
+        <tbody>
+          <tr><td style="width:28%;">등급(class)</td><td>E, S0, S, I — early-type에서 late-type 순<br><span class="guide-note">‘early-type·late-type’(조기형·만기형)은 허블 분류 순서에서 온 이름일 뿐 은하의 나이와는 관계없습니다. <strong>early-type</strong>은 중심부가 크고 매끈한 타원·렌즈형 쪽, <strong>late-type</strong>은 중심부가 작고 나선팔이 느슨하게 풀린 나선·불규칙은하 쪽입니다.</span></td></tr>
+          <tr><td>계열(family)</td><td>SA 막대 없음 · SB 막대 · SAB 중간</td></tr>
+          <tr><td>단계(stage)</td><td>En(n = 0~7) · S0⁻ / S0° / S0⁺ · S0/a → a, ab, b, bc, c, cd, d, dm → Sm · Im 마젤란형 불규칙 · I0 무정형 불규칙 · cI 조밀 불규칙</td></tr>
+          <tr><td>변형(variety)</td><td>(r) 안쪽 고리 · (s) 순수 나선(팔이 중심팽대부나 막대 끝에서 바로 나옴) · (rs) 부분 고리</td></tr>
+          <tr><td>바깥 고리</td><td>(R) 바깥 고리 · (R′) 나선팔이 만든 유사 바깥 고리</td></tr>
+          <tr><td>cD</td><td>여키스 분류의 ‘매우(c) 크고 확산된(D)’ 은하. 은하단·은하군 중심에 있음</td></tr>
+        </tbody>
+      </table>
+
+      <h3>활동성·전파 유형 약어</h3>
+      <table class="guide-table guide-table-compact">
+        <tbody>
+          <tr><td>AGN</td><td>활동은하핵</td><td>LSB</td><td>저표면밝기 은하</td></tr>
+          <tr><td>BCD</td><td>청색 조밀 왜소은하</td><td>NELG</td><td>좁은 방출선 은하</td></tr>
+          <tr><td>BCG</td><td>청색 조밀 은하</td><td>NL</td><td>좁은 선</td></tr>
+          <tr><td>BLAGN</td><td>넓은 선 활동은하핵</td><td>NLRG</td><td>좁은 선 전파은하</td></tr>
+          <tr><td>FRI</td><td>FR I형 전파은하 (전파가 주로 제트 안쪽에서 나옴)</td><td>QSO</td><td>준항성체(퀘이사)</td></tr>
+          <tr><td>FRII</td><td>FR II형 전파은하 (전파가 주로 제트 바깥쪽에서 나옴)</td><td>PRG</td><td>극고리 은하</td></tr>
+          <tr><td>HII</td><td>HII 영역이 두드러진 은하</td><td>RG</td><td>전파은하</td></tr>
+          <tr><td>HP</td><td>고편광</td><td>Sbrst</td><td>폭발적 별 탄생 은하</td></tr>
+          <tr><td>LERG</td><td>저여기 전파은하</td><td>Sy</td><td>세이퍼트 은하</td></tr>
+          <tr><td>LINER</td><td>저이온화 핵 방출선 영역 은하</td><td>LIRG</td><td>고광도 적외선 은하</td></tr>
+        </tbody>
+      </table>
+      <p class="guide-note">세이퍼트 하위 유형(Véron-Cetty &amp; Véron 2006): Sy 1 넓은 발머선 등 허용선 · Sy 1.5 1형과 2형의 중간 · Sy 2 발머선과 금지선의 폭이 같음 · Sy 1h 편광으로 보면 1형 스펙트럼인 2형 · Sy 1i 넓은 Paβ선이 있어 넓은 선 영역이 심하게 붉어진 2형</p>
+
+      <h3>나선팔 등급 (Elmegreen &amp; Elmegreen 1987)</h3>
+      <table class="guide-table guide-table-compact">
+        <tbody>
+          <tr><td>AC1</td><td>혼돈스럽고 조각나고 비대칭인 팔</td><td>AC7</td><td>대칭적인 긴 바깥 팔 둘, 깃털 같거나 불규칙한 안쪽 팔</td></tr>
+          <tr><td>AC2</td><td>규칙적 무늬 없는 팔 조각</td><td>AC8</td><td>촘촘하게 감긴 고리 같은 팔</td></tr>
+          <tr><td>AC3</td><td>중심 둘레에 고르게 퍼진 조각난 팔</td><td>AC9</td><td>대칭적인 안쪽 팔 둘, 길고 이어진 바깥 팔 여럿</td></tr>
+          <tr><td>AC4</td><td>뚜렷한 팔 하나, 나머지는 조각남</td><td>AC10</td><td>(더 이상 쓰지 않음, 예전엔 막대은하)</td></tr>
+          <tr><td>AC5</td><td>안쪽에 대칭적인 짧은 팔 둘, 바깥은 불규칙</td><td>AC11</td><td>(더 이상 쓰지 않음, 예전엔 가까운 동반은하가 있는 은하)</td></tr>
+          <tr><td>AC6</td><td>대칭적인 안쪽 팔 둘, 깃털 같은 고리 모양 바깥 구조</td><td>AC12</td><td>광학 원반을 지배하는 길고 대칭적인 팔 둘</td></tr>
+        </tbody>
+      </table>
+      <p class="guide-note">AC1~4는 양털형(flocculent), AC5~12는 웅장한 설계형(grand design) 은하입니다.</p>
+
+      <h3>형태 코드 T와 광도 계급 LC</h3>
+      <div class="guide-two-col">
+        <table class="guide-table guide-table-compact">
+          <thead><tr><th>T</th><th>유형</th></tr></thead>
+          <tbody>
+            <tr><td>−5</td><td>E</td></tr><tr><td>−3</td><td>E-S0</td></tr><tr><td>−2</td><td>S0</td></tr><tr><td>0</td><td>S0a</td></tr>
+            <tr><td>1</td><td>Sa</td></tr><tr><td>2</td><td>Sab</td></tr><tr><td>3</td><td>Sb</td></tr><tr><td>4</td><td>Sbc</td></tr>
+            <tr><td>5</td><td>S?</td></tr><tr><td>6</td><td>Sc</td></tr><tr><td>7</td><td>Scd</td></tr><tr><td>8</td><td>Sd</td></tr>
+            <tr><td>9</td><td>Sm</td></tr><tr><td>10</td><td>Irr</td></tr>
+          </tbody>
+        </table>
+        <table class="guide-table guide-table-compact">
+          <thead><tr><th>LC</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td>I</td><td>초거성 은하</td></tr><tr><td>I-II</td><td></td></tr><tr><td>II</td><td>밝은 거성 은하</td></tr><tr><td>II-III</td><td></td></tr>
+            <tr><td>III</td><td>보통 거성 은하</td></tr><tr><td>III-IV</td><td></td></tr><tr><td>IV</td><td>준거성 은하</td></tr><tr><td>IV-V</td><td></td></tr>
+            <tr><td>V</td><td>왜소은하</td></tr><tr><td>V-VI, VI</td><td></td></tr>
+            <tr><td>LIRG</td><td>고광도 적외선 은하</td></tr><tr><td>ULIRG</td><td>초고광도 적외선 은하</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="guide-source">📚 출처: Gerard Bodifee &amp; Michel Berger, <em>CMG, A Catalogue of One Thousand Galaxies</em>, Vol. I: Names and data, Urania v.z.w., Hove, 2010, “Explanation of the Table”, pp. 10–16. — 한글 번역·정리: 별바라기(StarFlower).</p>
+    </section>
+
+    <!-- 4. 라틴어·발음 -->
+    <section class="guide-panel" data-guide-panel="latin" hidden>
+      <h3>라틴어와 그리스어를 쓰는 이유</h3>
+      <p>저자들은 뉴턴이 인용한 옛 격언 <em>Pigmaei gigantum humeris impositi plus quam ipsi gigantes vident</em>(거인의 어깨에 앉은 난쟁이는 거인보다 더 멀리 본다)로 이 전통에 대한 빚을 표현합니다. 거인들의 언어를 쓰는 것은 그들을 기리는 알맞은 방법이라는 것입니다.</p>
+      <p>은하에 라틴어 이름을 붙이는 일은 과학이라기보다 시적인 작업이지만, 오래된 규칙은 지켜야 합니다. 대부분의 이름은 사전에 있는 정식 라틴어 단어이고, 일부는 새로 만든 말입니다. 라틴어는 예부터 외래어를 받아들이고 새 현상에 이름을 지어 왔습니다. 축구(<em>pediludium</em>), 아인슈타인의 일반 상대성 이론(<em>relativitas generalis Einsteiniana</em>) 같은 현대 라틴어도 그렇게 만들어졌습니다.</p>
+      <p>이름의 <strong>약 35%</strong>는 그리스어에서 왔습니다. 공룡 이름 대부분이 라틴어가 아니라 라틴어화한 그리스어이듯, 과학 ‘라틴어’에서 그리스어를 쓰는 것은 오랜 전통입니다. 서양 과학이 그리스 사상가들에게서 시작되었기 때문입니다. 그리스어 단어는 정해진 규칙(Stearn 1967 등)에 따라 라틴어화했으며, 일반인이 그리스어 사전을 찾기 어려우므로 해설에 원래 그리스어와 로마자 전사(라틴어화와는 다름)를 함께 적었습니다.</p>
+      <p>저자들은 중국·메소포타미아·인도·아랍·메소아메리카 등 다른 문명도 천문학에 큰 공헌을 했음을 알고 있으며, 라틴어·그리스어를 고른 것이 문화적 편협함 때문은 아니라고 밝힙니다. 중국어·산스크리트어·아랍어 이름도 검토했지만 실제적 어려움 때문에 포기했고, 1000개 다음의 수많은 은하는 다른 문화의 전문가들이 이어서 이름 붙여 균형을 되찾기를 기대합니다.</p>
+      <h3>라틴어 발음</h3>
+      <p>라틴어는 500~800년 무렵 모국어 화자를 잃었지만, 중세·르네상스를 거쳐 러시아·아이슬란드·아메리카·중국까지 퍼지며 계속 쓰이고 가르쳐졌습니다. 그 과정에서 지역마다 발음이 갈라졌고, 표준을 정할 모국어 화자나 권위가 없어 오늘날까지 여러 발음이 공존합니다. 학교에서는 기원전 1세기 로마의 재구성 발음을 가르치지만, 저자들이 기리려는 과학 전통은 다른 발음이 쓰이던 후대에 꽃피었습니다. 바티칸의 교회 라틴어도 지역 차가 있습니다. 결국 <strong>누구나 자기 지역이나 전통의 발음을 써도 됩니다.</strong></p>
+      <h3>강세</h3>
+      <p>올바른 강세만 지켜도 발음 문제의 상당 부분을 피할 수 있습니다. 그래서 표의 마지막 열에 강세를 표시한 이름을 실었습니다(라틴어는 보통 강세를 적지 않으므로 다른 곳에는 적지 않았습니다).</p>
+      <ul>
+        <li>강세는 마지막 음절에 거의 오지 않으며, 명사와 이름에서는 절대 오지 않습니다.</li>
+        <li>대부분 끝에서 둘째 음절에, 많은 단어가 끝에서 셋째 음절에 강세가 옵니다.</li>
+        <li>규칙: 끝에서 둘째 음절이 길면 그곳에, 짧으면 끝에서 셋째 음절에 강세가 옵니다. 음절의 장단은 대개 사전을 찾아야 알 수 있습니다.</li>
+        <li>그리스어 단어는 고전(키케로 시대) 방식대로 철자와 강세를 라틴어화했습니다. 예: 그리스어 <em>Hómeros</em> → 라틴어 <em>Homérus</em>.</li>
+      </ul>
+      <p class="guide-source">📚 출처: Gerard Bodifee &amp; Michel Berger, <em>CMG, A Catalogue of One Thousand Galaxies</em>, Vol. I: Names and data, Urania v.z.w., Hove, 2010, “Linguistic matters”, pp. 17–19. — 한글 요약: 별바라기(StarFlower).</p>
+    </section>
+
+    <!-- 5. 통계 -->
+    <section class="guide-panel" data-guide-panel="stats" hidden>
+      <p class="guide-note">원서 통계(p.20–23)의 수치를 그대로 옮겼습니다. 이후 데이터 수정으로 이 사이트의 집계와 약간 다를 수 있습니다.</p>
+      <h3>1. 하늘에서의 위치 — 반구별 분포</h3>
+      <div id="statHemis"></div>
+      <p>우리은하를 뺀 999개를 셌습니다. 세 좌표계 모두 두 반구에 꽤 고르게 퍼져 있습니다. 가장 큰 편차의 원인은 이 목록에 106개가 실린 <strong>처녀 은하단</strong>입니다(중심: 적경 12h 30m, 적위 +12° / 은경 284°, 은위 +74° / 초은경 103°, 초은위 −2°). 그래서 적도 북반구, 초은하 남반구, 그리고 은하 북반구에 은하가 더 많습니다.</p>
+      <h3>적경·경도별 분포</h3>
+      <div class="guide-tabs guide-subtabs" id="statLonTabs">
+        <button class="guide-tab active" type="button" data-lon="ra">적경 (시)</button>
+        <button class="guide-tab" type="button" data-lon="gal">은경 (도)</button>
+        <button class="guide-tab" type="button" data-lon="sg">초은경 (도)</button>
+      </div>
+      <div id="statLon"></div>
+      <p>적경 12h 30m 부근은 처녀 은하단의 영향이 뚜렷합니다. 적경 5~8시, 16~22시에 은하가 적은 것은 우리은하가 가리기 때문입니다. 은경 280~290°, 초은경 100° 부근이 처녀 은하단 중심입니다.</p>
+      <h3>별자리별 분포</h3>
+      <p class="guide-note">면적(제곱도), CMG 은하 수, 100제곱도당 은하 수. 열 제목을 누르면 정렬됩니다.</p>
+      <div id="statConst"></div>
+      <h3>2. 은하단·은하군 소속</h3>
+      <div id="statClusters"></div>
+      <h3>3. 적색편이</h3>
+      <div id="statRedshift"></div>
+      <p>z 값이 없는 천체가 둘 있습니다: CMG 338(NGC 3314, <em>Superpositi Hydrae</em> — 단일 천체가 아니라 두 은하의 겹침)과 CMG 993(<em>Via Lactea</em>, 우리은하). 적색편이 0.001~0.1, 곧 허블 흐름 거리 4~400 Mpc(약 1천만~10억 광년) 은하가 대부분이며, z &gt; 1인 CMG 997(<em>Biquasar Ursae Majoris</em>)을 빼면 모두 비교적 가깝습니다.</p>
+      <h3>4. 형태</h3>
+      <div id="statMorph"></div>
+      <p>형태 코드 T 값이 있는 은하만 셌습니다. 많은 은하가 아름다움과 시각적 매력 같은 주관적 기준으로 뽑혔기 때문에, 이 분포는 우주의 실제 분포를 나타내지 않습니다. 잘 짜인 나선은하가 지나치게 많고 왜소·불규칙은하가 적습니다.</p>
+      <p class="guide-source">📚 출처: Gerard Bodifee &amp; Michel Berger, <em>CMG, A Catalogue of One Thousand Galaxies</em>, Vol. I: Names and data, Urania v.z.w., Hove, 2010, “Statistics §1–4”, pp. 20–23. — 수치는 원서 그대로, 설명은 한글 요약: 별바라기(StarFlower).</p>
+    </section>
+
+    <!-- 6. 특별 목록 -->
+    <section class="guide-panel" data-guide-panel="lists" hidden>
+      <p class="guide-note">원서 통계 장(p.24–28)의 목록입니다. 행을 누르면 해당 은하의 상세 제원이 열리고, 목록 제목 옆 버튼을 누르면 그 목록만 카드로 볼 수 있습니다.</p>
+      <div id="guideLists"></div>
+      <p class="guide-source">📚 출처: Gerard Bodifee &amp; Michel Berger, <em>CMG, A Catalogue of One Thousand Galaxies</em>, Vol. I: Names and data, Urania v.z.w., Hove, 2010, “Statistics §5–8”, pp. 24–28. — 목록·수치는 원서 그대로, 인물 소개는 한글 번역: 별바라기(StarFlower).</p>
+    </section>
+
+    <!-- 7. 참고문헌 -->
+    <section class="guide-panel" data-guide-panel="refs" hidden>
+      <h3>천문학</h3>
+      <ul class="guide-refs">
+        <li>Allen R.H., <em>Star Names, Their Lore and Meaning</em>, Dover, New York, 1963</li>
+        <li>Arp H.C., Madore B.F., <em>A Catalogue of Southern Peculiar Galaxies and Associations</em>, Cambridge University Press, 1987</li>
+        <li>Baade W., Astronomische Nachrichten, 233, p. 407-408, 1928</li>
+        <li>Bishop D., <em>Bright supernovae</em>, http://www.supernovae.net/snimages/</li>
+        <li>Bodifee G., <em>Diotima</em>, Uitgeverij Pelckmans, Kapellen, Belgium, 2008</li>
+        <li>Buta R.J., Corwin H.G., Odewahn S.C., <em>The de Vaucouleurs Atlas of Galaxies</em>, Cambridge University Press, 2007</li>
+        <li>Cragin M., Bonanno E., <em>Uranometria 2000.0</em>, vol.3, Deep Sky Field Guide, 2nd ed., Willmann-Bell, 2001</li>
+        <li>Dahlem M., Ehle M., Ryder S.D., Astronomy and Astrophysics, 371, 45-51, 2001</li>
+        <li>De Vaucouleurs G., <em>Handbuch der Physik</em>, 53, 275, 1959</li>
+        <li>De Vaucouleurs G., de Vaucouleurs A., Corwin H.G., <em>Second Reference Catalogue of Bright Galaxies</em> (RC2), University of Texas Press, 1976</li>
+        <li>de Vaucouleurs G. et al., <em>Third Reference Catalogue of Bright Galaxies, Version 3.9</em> (RC3.9), 1991</li>
+        <li>Elmegreen D.M., Elmegreen B.G., Arm Classification for Spiral Galaxies, ApJ, 314, 3-9, 1987</li>
+        <li>Hubble E., ApJ, 64, 321, 1926</li>
+        <li>Hubble E., <em>The Realm of The Nebulae</em>, Yale University Press, 1936</li>
+        <li>HyperLeda, Database for physics of galaxies, http://leda.univ-lyon1.fr/</li>
+        <li>Kanipe J., Webb D., <em>The Arp Atlas of Peculiar Galaxies</em>, Willmann-Bell, 2006</li>
+        <li>NED, NASA/IPAC Extragalactic Database; NED-1D, Masterlist of Galaxy Distances (Madore &amp; Steer)</li>
+        <li>O'Meara S.J., <em>The Caldwell Objects</em>, Cambridge University Press / Sky Publishing, 2002</li>
+        <li>O'Meara S.J., <em>Hidden Treasures</em>, Cambridge University Press / Sky Publishing, 2007</li>
+        <li>Powell R., <em>An Atlas of the Universe</em>, http://www.atlasoftheuniverse.com (2006)</li>
+        <li>Rubin V., Graham J.H., Kenney J.P.D., ApJ, 394, L9, 1992</li>
+        <li>Rubin V., <em>Bright Galaxies, Dark Matters</em>, American Institute of Physics, 1997</li>
+        <li>Sandage A., <em>The Hubble Atlas of Galaxies</em>, Carnegie Institution of Washington, 1961</li>
+        <li>Sandage A., Bedke J., <em>The Carnegie Atlas of Galaxies</em>, Carnegie Institution of Washington, 1994</li>
+        <li>Sinnott R.W., <em>NGC2000.0</em>, Cambridge Univ. Press / Sky Publ., 1988</li>
+        <li>Sinnott R.W., Perryman M., <em>Millennium Star Atlas</em>, vol. 1-3, Sky Publishing, 1997</li>
+        <li>Slipher V.M., Proceedings of the American Philosophical Society, 56, no. 5, p. 403-409, 1917</li>
+        <li>Stearn W.T., <em>Botanical Latin</em>, Nelson, London, 1967</li>
+        <li>Steinicke W., <em>Revised New General Catalogue and Index Catalogue</em></li>
+        <li>Tirion W., <em>Sky Atlas 2000.0</em>, Cambridge University Press / Sky Publishing, 1981</li>
+        <li>Tirion W., Rappaport B., Remaklus W., <em>Uranometria 2000.0, Deep Sky Atlas</em>, vol.1-2, 2nd ed., Willmann-Bell, 2001</li>
+        <li>Van den Bergh S., ApJ, 131, 215 and 558, 1960</li>
+        <li>Van den Bergh S., <em>The Galaxies of the Local Group</em>, Cambridge University Press, 2000</li>
+        <li>Véron-Cetty M.-P., Véron P., A Catalogue of Quasars and Active Nuclei: 12th edition, A&amp;A, 455, 773-777, 2006</li>
+      </ul>
+      <h3>언어학</h3>
+      <ul class="guide-refs">
+        <li>Gundel W., article <em>Galaxias</em>, in Pauly A., Wissowa G., <em>Realencyclopädie der Classischen Altertumwissenschaft</em>, Band 7, Stuttgart, 1912</li>
+        <li>International Commission on Zoological Nomenclature, <em>International Code of Zoological Nomenclature</em>, 1999</li>
+        <li>Koller H., <em>Orbis Pictus Latinus</em>, Artemis Verlag, Zürich, 1983</li>
+        <li>Langenscheidt, <em>Grosses Schulwörterbuch Lateinisch-Deutsch</em>, Berlin, 2008</li>
+        <li><em>Lexicon Recentis Latinitatis</em>, Libraria Editoria Vaticana, 2003</li>
+        <li>Lewis C.T., Short C., <em>A Latin Dictionary</em>, Clarendon Press, Oxford, 1879</li>
+        <li>Liddell H.G., Scott R., <em>A Greek-English Lexicon</em>, Clarendon Press, Oxford, 1953</li>
+        <li>Menge H., <em>Lateinische Synonymik</em>, Carl Winter, Heidelberg, 1959</li>
+        <li><em>Online Etymology Dictionary</em>, http://www.etymonline.com</li>
+        <li>Quicherat L., Chatelain E., <em>Dictionnaire Français-Latin</em>, Hachette, Paris, 1891</li>
+        <li><em>Vicipaedia</em> (Latin Wikipedia), http://la.wikipedia.org</li>
+        <li>Woodhouse S.C., <em>English-Greek Dictionary</em>, University of Chicago Library</li>
+      </ul>
+      <p class="guide-source">📚 출처: Gerard Bodifee &amp; Michel Berger, <em>CMG, A Catalogue of One Thousand Galaxies</em>, Vol. I: Names and data, Urania v.z.w., Hove, 2010, “References and Sources”, pp. 29–30. — 원서 목록 그대로: 별바라기(StarFlower).</p>
+    </section>
+  </div>
+</div>
+
+<!-- 은하 자료(1000개): 다른 폴더로 옮기면 이 경로만 바꾸면 됩니다 -->
+<script src="../sf_data/cmg1000/cmg_1000_catalog.js"></script>
+<!-- 화면 동작 -->
+<script src="cmg1000.js?v=20261103d"></script>
+</body>
+</html>
