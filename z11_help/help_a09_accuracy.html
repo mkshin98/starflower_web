@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../z90_images/favicon/favicon-32.png">
+<link rel="apple-touch-icon" href="../z90_images/favicon/favicon-180.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>별바라기 위치 계산의 정확도</title>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-MK63WGMZ');</script>
+	<!-- End Google Tag Manager -->
+
+	<link rel="stylesheet" href="../sf_css/sf2020_style.css">
+
+</head>
+
+<body class="body_sf2020" >
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MK63WGMZ"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="div_bg_max1080">
+
+	<a href="../index.html">별바라기 홈</a> > <a href="help_00_index.html">도움말</a> >
+
+	<h2><b>위치 계산의 정확도</b></h2>
+
+<p>
+	별바라기는 태양, 달, 행성의 위치를 미국 NASA 제트추진연구소(JPL)의 DE441 천체력으로 계산하고,
+	별의 위치와 등급은 Hipparcos 위성 자료를 사용한다.
+	현대의 날짜에서는 JPL Horizons와 1초각 이내로 같은 결과를 보여준다.
+	기원전 3000년과 같은 먼 과거에는 계산 방법보다 지구 자전 속도(ΔT)를 정확히 모른다는 점이 정확도를 정한다.
+</p>
+
+	<h3><b>요약</b></h3>
+	<table class="border">
+		<tr class="border">
+			<td class="border_light_gray">대상</td>
+			<td class="border_light_gray">자료·방법</td>
+			<td class="border_light_gray">현대 (2026년)</td>
+			<td class="border_light_gray">먼 과거 (기원전 3000년)</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">태양·행성</td>
+			<td class="border_left">JPL DE441</td>
+			<td class="border_left">Horizons와 0.001″ (천체측정 위치),<br>0.05″ (겉보기 위치)</td>
+			<td class="border_left">궤도 계산은 같은 정확도,<br>시각은 ΔT 불확실성만큼</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">달</td>
+			<td class="border_left">JPL DE441</td>
+			<td class="border_left">Horizons와 0.02″</td>
+			<td class="border_left">ΔT 불확실성이 지배 (아래 한계 참고)</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">별</td>
+			<td class="border_left">Hipparcos 2007, Tycho-2,<br>고유운동·시선속도</td>
+			<td class="border_left">기준 계산과 0.03″</td>
+			<td class="border_left">기준 계산과 0.03″<br>(쌍성의 궤도 운동은 제외)</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">고도·방위각</td>
+			<td class="border_left">Vondrák 2011 장기 세차,<br>장동, 광행차</td>
+			<td class="border_left">Horizons와 약 1″</td>
+			<td class="border_left">세차 모델 차이로 수십 초</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">월식</td>
+			<td class="border_left">DE441, Chauvenet 그림자</td>
+			<td class="border_left">NASA와 최대 시각 1초,<br>한국천문연구원과 접촉 시각 1~5초</td>
+			<td class="border_left">ΔT 불확실성만큼</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">일식</td>
+			<td class="border_left">DE441, 관측지 기준 계산</td>
+			<td class="border_left">NASA 자료로 계산한 접촉 시각과 1초</td>
+			<td class="border_left">ΔT 불확실성만큼</td>
+		</tr>
+	</table>
+
+
+	<h3><b>태양·달·행성</b></h3>
+<p>
+	태양, 달, 수성부터 명왕성까지의 위치는 NASA 제트추진연구소(JPL)의
+	<a href="https://ssd.jpl.nasa.gov/ftp/eph/planets/Linux/de441/">DE441</a> 천체력에서 직접 읽는다.
+	JPL Horizons가 사용하는 것과 같은 수치 적분 자료이다.
+</p>
+	<ul class="sf_std">
+		<li><b>계산 범위:</b> 기원전 5000년 ~ 서기 3000년. 이 밖의 날짜는 Jean Meeus의 <i>Astronomical Algorithms</i> 방식으로 계산한다.</li>
+		<li><b>시간 척도:</b> 천체의 위치는 역학시(TT)로, 지구의 자전(항성시)은 세계시(UT)로 계산한다.</li>
+		<li><b>ΔT (TT − UT):</b> Stephenson, Morrison &amp; Hohenkerk(2016)와 2020년 보완판 모델을 사용한다.
+			JPL Horizons가 사용하는 모델과 같으며, DE441의 달 조석 가속에 맞춘 보정까지 넣어 Horizons 값과 ±0.2초 이내로 같다.
+			2019년 이후는 IERS 관측값(USNO 자료)을 사용한다.</li>
+	</ul>
+<p>
+	JPL Horizons와 같은 시각의 값을 비교한 결과는 다음과 같다.
+</p>
+	<table class="border">
+		<tr class="border">
+			<td class="border_light_gray">비교 항목</td>
+			<td class="border_light_gray">차이</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">태양·화성의 천체측정 위치 (기원전 4900년 ~ 2026년)</td>
+			<td class="border">0.001″ 이내</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">달의 지구 중심 위치 (기원전 4900년 ~ 2026년)</td>
+			<td class="border">0.02″ 이내</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">2026년 서울에서 본 태양 / 화성 / 달</td>
+			<td class="border">0.25″ / 0.13″ / 0.1″</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">ΔT (기원전 4900년, 기원전 3000년, 1000년, 2026년)</td>
+			<td class="border">0.2초 이내</td>
+		</tr>
+	</table>
+
+
+	<h3><b>좌표계와 지평 좌표</b></h3>
+<p>
+	적도 성도는 인쇄된 성도처럼 J2000 좌표계로 그리고, 지평 성도는 그 시대의 실제 하늘 방향으로 그린다.
+</p>
+	<ul class="sf_std">
+		<li><b>적도 성도:</b> 별, 행성, 달, 혜성, 인공위성을 모두 같은 J2000 좌표로 그린다.
+			별은 그 시대의 위치(고유운동)로 옮겨 그리므로, 행성과 달이 별 사이 어디에 있는지가 정확하다.
+			적경·적위 격자는 J2000 기준이다.</li>
+		<li><b>지평 성도:</b> J2000 좌표에 세차(Vondrák, Capitaine &amp; Wallace 2011 장기 세차, ±20만 년 유효), 장동, 연주 광행차를 더해
+			그 시각의 고도와 방위각을 구한다. 예를 들어 기원전 2800년 서울에서는 투반(용자리 알파)이 북극성 자리에 있고,
+			북극성은 북극에서 25° 떨어져 돌아간다.</li>
+		<li><b>정확도:</b> 2026년 서울에서 Horizons와 방위각·고도가 약 1″ 다르다.
+			기원전 3000년 무렵에는 수십 초 차이가 나는데, Horizons가 짧은 기간용 IAU 1976 세차를 사용하기 때문이다.
+			별바라기가 사용하는 장기 세차가 먼 과거에는 더 정확하다.</li>
+		<li><b>대기 굴절:</b> 위의 비교는 대기 굴절을 빼고 한 값이다.</li>
+	</ul>
+
+
+	<h3><b>일식·월식</b></h3>
+<p>
+	일식과 월식의 시각과 식분은 DE441 위치로 직접 계산한다.
+	월식은 NASA 월식 목록과 최대 시각이 1초 이내이고, 접촉 시각은 한국천문연구원 발표값과 1~5초 이내이다.
+</p>
+	<ul class="sf_std">
+		<li><b>월식:</b> 달 중심이 지구 그림자 축에 가장 가까운 때가 최대이다.
+			지구 그림자 크기는 한국천문연구원과 천문연감이 사용하는 Chauvenet 방법(대기에 의한 확대 1/50)을 사용한다.
+			반영식 시작(P1), 부분식 시작(U1), 개기식 시작(U2), 최대, U3, U4, P4를 보여준다.</li>
+		<li><b>일식:</b> 관측지에서 본 해와 달로 계산한다.
+			최대 시각, 식분, 시작(C1)·개기 또는 금환 시작(C2)·끝(C3)·식 끝(C4)이 관측지마다 다르게 계산된다.
+			달 반지름은 NASA와 같은 값(k = 0.2725076, 개기·금환 판정에는 0.2722810)을 사용한다.</li>
+	</ul>
+	<table class="border">
+		<tr class="border">
+			<td class="border_light_gray">비교</td>
+			<td class="border_light_gray">대상</td>
+			<td class="border_light_gray">차이</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left"><a href="https://eclipse.gsfc.nasa.gov/LEcat5/LE2001-2100.html">NASA 월식 목록</a></td>
+			<td class="border_left">2025~2028년 월식 8개의 최대 시각</td>
+			<td class="border">1초 이내</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">한국천문연구원 발표값</td>
+			<td class="border_left">2026년 3월 3일 개기월식 접촉 시각</td>
+			<td class="border">1~5초</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left"><a href="https://eclipse.gsfc.nasa.gov/SEpath/SEpath2001/SE2026Aug12Tpath.html">NASA 2026년 8월 12일 개기일식 중심선</a></td>
+			<td class="border_left">개기식 지속 시간 (세 지점)</td>
+			<td class="border">0.1초 이내</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left"><a href="https://eclipse.gsfc.nasa.gov/SEgoogle/SEgoogle2001/SE2026Aug12Tgoogle.html">NASA Besselian 원소</a>로 계산한 관측지 상황</td>
+			<td class="border_left">레이캬비크, 마드리드, 리스본의 C1~C4와 식분</td>
+			<td class="border">1초 이내, 식분 0.0005 이내</td>
+		</tr>
+	</table>
+<p>
+	NASA 월식 목록은 Danjon 방법으로 그림자 크기를 정하므로, 별바라기의 접촉 시각은 NASA와 부분식 20초 안팎,
+	반영식 1분 30초 안팎이 다르다. <a href="https://eclipse.gsfc.nasa.gov/LEcat5/shadow.html">두 방법의 차이</a>는 관례 차이이며,
+	최대 시각은 같다.
+</p>
+
+
+	<h3><b>별 자료</b></h3>
+<p>
+	별바라기가 그리는 별 45,269개(약 9등급까지) 가운데 98%의 위치, 등급, 고유운동은 Hipparcos와 Tycho-2 위성 자료이다.
+	Sky Catalogue 2000.0은 별의 목록(어떤 별을 그릴지)과 정보창의 설명에 사용한다.
+</p>
+	<table class="border">
+		<tr class="border">
+			<td class="border_light_gray">자료</td>
+			<td class="border_light_gray">별 개수</td>
+			<td class="border_light_gray">사용하는 값</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left"><a href="https://vizier.cds.unistra.fr/viz-bin/VizieR?-source=I/311">Hipparcos 2007</a> (van Leeuwen 재처리)</td>
+			<td class="border">40,097 (88.6%)</td>
+			<td class="border_left">위치, 고유운동, 연주시차. 등급은 <a href="https://vizier.cds.unistra.fr/viz-bin/VizieR?-source=I/239">Hipparcos 원판</a>의 V 등급</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left"><a href="https://vizier.cds.unistra.fr/viz-bin/VizieR?-source=V/137D">XHIP</a></td>
+			<td class="border">26,142</td>
+			<td class="border_left">시선속도 (가까운 별의 원근 효과)</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left"><a href="https://vizier.cds.unistra.fr/viz-bin/VizieR?-source=I/259">Tycho-2</a></td>
+			<td class="border">4,392 (9.7%)</td>
+			<td class="border_left">Hipparcos에 없는 별의 위치, 고유운동, V 등급</td>
+		</tr>
+		<tr class="border">
+			<td class="border_left">Sky Catalogue 2000.0</td>
+			<td class="border">780 (1.7%)</td>
+			<td class="border_left">짝이 없는 별 (대부분 7~8등급, 가까운 이중성의 반성)</td>
+		</tr>
+	</table>
+	<ul class="sf_std">
+		<li><b>변광성과 이중성:</b> 등급이 1등급 넘게 다른 207개는 Sky Catalogue 2000.0의 등급을 두었다 (예: 미라는 최대 밝기 3.0등급).</li>
+		<li><b>고유운동:</b> 적도 성도와 지평 성도 모두에서 별을 그 시대의 위치로 그린다. 별자리 선도 함께 움직인다.
+			시차와 시선속도가 있는 별은 공간 운동 전체를 계산한다.</li>
+		<li><b>정확도:</b> 아크투루스, 시리우스, 알파 센타우리 A, 백조자리 61 A의 위치가 기원전 3000년까지 Hipparcos 기준 계산과 0.03″ 이내로 같다.
+			고유운동을 넣지 않으면 기원전 3000년에 아크투루스는 3.2°, 백조자리 61 A는 6.7° 어긋난다.</li>
+		<li><b>정보창:</b> 별 정보창의 적경·적위·등급 같은 값은 Sky Catalogue 2000.0의 값이다.
+			성도에 그린 값과 수 초, 등급으로 수십분의 일 등급 다를 수 있다.</li>
+		<li><b>어두운 별:</b> 더 어두운 별은 GSC(가이드 스타 목록)를 사용한다. GSC 별에는 고유운동이 없다.</li>
+	</ul>
+
+
+	<h3><b>한계와 주의 사항</b></h3>
+<p>
+	먼 과거의 하늘에서 가장 큰 오차는 계산이 아니라 지구 자전이 얼마나 느려졌는지(ΔT)를 정확히 모른다는 데서 온다.
+</p>
+	<ul class="sf_std">
+		<li><b>ΔT 불확실성:</b> JPL Horizons 설명서에 따르면 <a href="https://ssd.jpl.nasa.gov/horizons/manual.html">기원전 3000년의 세계시 불확실성은 약 4시간</a>이다.
+			달은 한 시간에 약 0.55° 움직이므로, 그 시대 특정 시각의 달 위치는 별 사이에서 최대 2° 안팎 달라질 수 있다.
+			별과 행성의 위치는 이 영향을 거의 받지 않는다.</li>
+		<li><b>옛 기록의 시각:</b> 옛 기록의 시각은 지방 시태양시에 가까워, 한국 표준시(UT+9)와 30분 안팎(균시차에 따라 ±16분) 다르다.
+			기록과 비교할 때는 시간대를 맞춰 넣어 주어야 한다.</li>
+		<li><b>쌍성 궤도:</b> 알파 센타우리처럼 서로 도는 쌍성의 궤도 운동은 넣지 않았다.</li>
+		<li><b>GSC 별:</b> 어두운 GSC 별에는 고유운동이 없어, 먼 과거에는 일부가 수 분각 어긋난다.</li>
+		<li><b>성도 격자:</b> 적도 성도의 격자는 J2000 기준이라, 옛 성도를 인쇄하면 별은 그 시대 위치이지만 적경·적위선은 오늘날 기준이다.</li>
+		<li><b>계산 범위:</b> DE441 계산은 기원전 5000년 ~ 서기 3000년에서 사용하고, 그 밖은 덜 정확한 Meeus 방식으로 계산한다.</li>
+	</ul>
+
+
+	<h3><b>참고 자료</b></h3>
+	<ul class="sf_std">
+		<li><a href="https://ssd.jpl.nasa.gov/ftp/eph/planets/Linux/de441/">JPL DE441 천체력</a>, Park et al. (2021), NASA JPL</li>
+		<li><a href="https://ssd.jpl.nasa.gov/horizons/manual.html">JPL Horizons 설명서</a> (ΔT 모델과 불확실성)</li>
+		<li>Stephenson, Morrison &amp; Hohenkerk (2016), <i>Measurement of the Earth's rotation: 720 BC to AD 2015</i>, Proc. R. Soc. A 472, 20160404;
+			Morrison et al. (2021) 2020년 보완판, Proc. R. Soc. A 477</li>
+		<li><a href="https://maia.usno.navy.mil/ser7/deltat.data">USNO ΔT 관측값</a> (IERS)</li>
+		<li>Vondrák, Capitaine &amp; Wallace (2011), <i>New precession expressions, valid for long time intervals</i>, A&amp;A 534, A22
+			(<a href="https://github.com/liberfa/erfa">ERFA 구현</a>)</li>
+		<li><a href="https://eclipse.gsfc.nasa.gov/LEcat5/LE2001-2100.html">NASA 월식 목록 2001~2100</a>,
+			<a href="https://eclipse.gsfc.nasa.gov/LEcat5/shadow.html">지구 그림자 크기 방법</a>, F. Espenak</li>
+		<li><a href="https://eclipse.gsfc.nasa.gov/SEpath/SEpath2001/SE2026Aug12Tpath.html">NASA 2026년 8월 12일 개기일식 중심선</a>,
+			<a href="https://eclipse.gsfc.nasa.gov/SEgoogle/SEgoogle2001/SE2026Aug12Tgoogle.html">Besselian 원소</a></li>
+		<li><a href="https://vizier.cds.unistra.fr/viz-bin/VizieR?-source=I/311">Hipparcos 2007</a> (van Leeuwen 2007),
+			<a href="https://vizier.cds.unistra.fr/viz-bin/VizieR?-source=I/239">Hipparcos 1997</a>,
+			<a href="https://vizier.cds.unistra.fr/viz-bin/VizieR?-source=I/259">Tycho-2</a>,
+			<a href="https://vizier.cds.unistra.fr/viz-bin/VizieR?-source=V/137D">XHIP</a> — CDS VizieR</li>
+		<li>Sky Catalogue 2000.0, Vol. 1 (Hirshfeld, Sinnott &amp; Ochsenbein, Sky Publishing)</li>
+		<li>Jean Meeus, <i>Astronomical Algorithms</i> (Willmann-Bell)</li>
+	</ul>
+
+
+<hr>
+    <p align="center"><a href="https://starflower.info">별바라기 홈</a>&emsp;최종 변경: 2026년 10월 27일
+    </p>
+
+
+</div>
+</body>
+</html>
