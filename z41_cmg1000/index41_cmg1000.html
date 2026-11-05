@@ -101,7 +101,7 @@
     <p><strong>📚 출처</strong> — 은하 학명(제9열), 해설(제10열), 표 자료와 카탈로그 해설·통계·특별 목록은 다음 책에 근거합니다:<br>
       Gerard Bodifee &amp; Michel Berger, <em>CMG, A Catalogue of One Thousand Galaxies</em>, Vol. I: Names and data, Urania v.z.w., Hove, 2010. © Gerard Bodifee, Michel Berger. All rights reserved.</p>
     <p>원서의 자료는 Hyperleda, NED, <em>Uranometria 2000.0</em>, <em>The Carnegie Atlas of Galaxies</em>, <em>The de Vaucouleurs Atlas of Galaxies</em>, David Bishop의 <em>Bright Supernovae</em> 등에서 모은 것입니다(자세한 목록은 ‘카탈로그 해설 › 7. 참고문헌’).</p>
-    <p>은하 사진은 좌표로 CDS hips2fits 서비스(Strasbourg astronomical Data Center)에서 받아 보여 줍니다: DSS2 컬러 — Digitized Sky Survey, © AURA/STScI (POSS-II, UK Schmidt Telescope 사진 기반) · 고해상도 — DESI Legacy Imaging Surveys DR10.</p>
+    <p>은하 사진은 좌표로 CDS hips2fits 서비스(Strasbourg astronomical Data Center)에서 받아 보여 줍니다: DSS2 컬러 — Digitized Sky Survey, © AURA/STScI (POSS-II, UK Schmidt Telescope 사진 기반) · 고해상도 — DESI Legacy Imaging Surveys DR10. CDS 서버가 멈췄을 때는 Legacy Survey 컷아웃 서비스(legacysurvey.org)의 DESI Legacy Imaging Surveys DR10 사진을, 그 탐사가 찍지 않은 하늘은 unWISE 적외선 사진(NASA WISE/NEOWISE)을 대신 보여 줍니다. 사진마다 실제 출처는 상세 창의 사진 설명에 적혀 있습니다.</p>
     <p>한글 번역·요약과 별자리 한글 표기는 별바라기(StarFlower)가 작성했습니다. CMG의 라틴어 이름은 국제천문연맹(IAU)이 승인한 공식 명칭이 아닙니다.</p>
   </div>
   <p class="site-footer-home"><a href="https://starflower.info">별바라기 홈</a>&emsp;최종 변경: 2026년 11월 3일</p>
@@ -446,7 +446,9 @@
 
 <!-- 은하 자료(1000개): 다른 폴더로 옮기면 이 경로만 바꾸면 됩니다 -->
 <script src="../sf_data/cmg1000/cmg_1000_catalog.js"></script>
+<!-- 백업 사진마다 받은 서버 (fetch_images.py가 만듦, 없어도 됨) -->
+<script src="img/sources.js"></script>
 <!-- 화면 동작 -->
-<script src="cmg1000.js?v=20261103d"></script>
+<script src="cmg1000.js?v=20261106a"></script>
 </body>
 </html>

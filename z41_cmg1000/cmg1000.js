@@ -448,17 +448,27 @@
     }
   }
 
-  // ===== 은하 사진: 좌표와 겉보기 크기로 CDS hips2fits 서비스에서 바로 받아 옴 =====
-  // DSS2 사진은 sf_data/cmg1000/fetch_images.py로 img/dss240, img/dss480에 백업해 두고 먼저 보여 줌.
-  // 백업 파일이 없으면 CDS로 요청 (주소 계산은 fetch_images.py와 같아야 함)
+  // ===== 은하 사진: 좌표와 겉보기 크기로 사진 서버에서 바로 받아 옴 =====
+  // 저해상도 사진은 sf_data/cmg1000/fetch_images.py로 img/dss240, img/dss480에 백업해 두고 먼저 보여 줌.
+  // 시도 순서: 백업 파일 → CDS hips2fits → Legacy Survey 컷아웃 (CDS가 멈췄을 때 예비)
+  // 주소 계산은 fetch_images.py와 같아야 함
   // 하늘에서 너무 큰 천체(소·대마젤란은하, 우리은하, 궁수 왜소타원체은하)는 사진 대신 링크만
   const NO_IMAGE_NOS = new Set([36, 990, 993, 998]);
+  const CDS_HOST = 'alasky.cds.unistra.fr';
+  let cdsDown = false;   // CDS가 응답하지 않으면 true → 그 뒤로는 예비 서버로 바로 받음
   const IMAGE_SURVEYS = {
-    dss: { hips: 'CDS/P/DSS2/color', label: 'DSS2 컬러 (전천)',
-           credit: 'DSS2 (POSS-II/UKSTU, © AURA/STScI), CDS hips2fits' },
-    legacy: { hips: 'CDS/P/DESI-Legacy-Surveys/DR10/color', label: '고해상도 (Legacy Surveys)',
-              credit: 'DESI Legacy Imaging Surveys DR10, CDS hips2fits' }
+    dss: { hips: 'CDS/P/DSS2/color', label: 'DSS2 컬러 (전천)' },
+    legacy: { hips: 'CDS/P/DESI-Legacy-Surveys/DR10/color', label: '고해상도 (Legacy Surveys)' }
   };
+  // 사진 출처별 표시 (이름은 fetch_images.py의 SOURCES와 같음)
+  const IMAGE_SOURCES = {
+    dss: 'DSS2 (POSS-II/UKSTU, © AURA/STScI), CDS hips2fits',
+    legacy: 'DESI Legacy Imaging Surveys DR10, CDS hips2fits',
+    'ls-dr10': 'DESI Legacy Imaging Surveys DR10, legacysurvey.org',
+    'unwise-neo7': 'unWISE 적외선 (NASA WISE/NEOWISE), legacysurvey.org'
+  };
+  // 백업 사진마다 받은 서버 (img/sources.js, fetch_images.py가 만듦). 없으면 모두 DSS2로 봄
+  const BACKUP_SOURCES = window.CMG1000_IMAGE_SOURCES || {};
   function parseJ2000(s) {
     const m = /^J(\d{2})(\d{2})(\d{2}(?:\.\d+)?)([+-])(\d{2})(\d{2})(\d{2}(?:\.\d+)?)/.exec(s || '');
     if (!m) return null;
@@ -480,8 +490,8 @@
     const a = fovDeg(g, survey) * 60;
     return a >= 60 ? `${(a / 60).toFixed(1)}°` : `${a.toFixed(1)}′`;
   }
-  function photoCaption(g, survey) {
-    return `시야 ${fovText(g, survey)} · 북쪽 위, 동쪽 왼쪽 · 사진: ${IMAGE_SURVEYS[survey].credit}`;
+  function photoCaption(g, survey, source) {
+    return `시야 ${fovText(g, survey)} · 북쪽 위, 동쪽 왼쪽 · 사진: ${IMAGE_SOURCES[source || survey]}`;
   }
   function imageUrl(g, survey, px) {
     const p = skyPos(g);
@@ -489,27 +499,79 @@
     return 'https://alasky.cds.unistra.fr/hips-image-services/hips2fits?hips=' + encodeURIComponent(IMAGE_SURVEYS[survey].hips) +
       `&ra=${p.ra.toFixed(5)}&dec=${p.dec.toFixed(5)}&fov=${fovDeg(g, survey).toFixed(4)}&width=${px}&height=${px}&projection=TAN&format=jpg`;
   }
+  // Legacy Survey 컷아웃: 시야 대신 픽셀 크기(초각/픽셀)를 받으므로 같은 범위가 되도록 환산
+  function legacyCutoutUrl(g, survey, px) {
+    const p = skyPos(g);
+    if (!p) return '';
+    const pixscale = (fovDeg(g, survey) * 3600 / px).toFixed(3);
+    return `https://www.legacysurvey.org/viewer/cutout.jpg?ra=${p.ra.toFixed(5)}&dec=${p.dec.toFixed(5)}&layer=ls-dr10&pixscale=${pixscale}&size=${px}`;
+  }
   function backupUrl(g, survey, px) {
     return survey === 'dss' && skyPos(g) ? `img/dss${px}/${String(g.no).padStart(4, '0')}.jpg` : '';
   }
-  // <img> 속성: 백업이 있으면 백업을 src로, CDS 주소를 data-fallback으로
-  function photoAttrs(g, survey, px) {
-    const cds = imageUrl(g, survey, px);
+  // 시도할 사진 주소 목록 [[주소, 출처], ...]
+  function photoChain(g, survey, px) {
+    const chain = [];
     const backup = backupUrl(g, survey, px);
-    return backup ? `src="${backup}" data-fallback="${cds}"` : `src="${cds}"`;
+    if (backup) chain.push([backup, BACKUP_SOURCES[String(g.no).padStart(4, '0')] || 'dss']);
+    // Legacy 컷아웃은 처음 만드는 사진이면 가끔 실패하고 다시 요청하면 뜸 → 한 번 더 시도
+    const ls = legacyCutoutUrl(g, survey, px);
+    chain.push([imageUrl(g, survey, px), survey], [ls, 'ls-dr10'], [ls + '&retry=1', 'ls-dr10']);
+    return cdsDown ? chain.filter(([url]) => !url.includes(CDS_HOST)) : chain;
   }
-  // 사진을 못 받으면: 백업 → CDS로 한 번 더, 그래도 실패하면 목록 썸네일은 숨김
-  // (img의 error 이벤트는 버블링되지 않아 capture 단계에서 받음)
-  document.addEventListener('error', e => {
-    const img = e.target;
-    if (!(img instanceof HTMLImageElement)) return;
-    const next = img.getAttribute('data-fallback');
+  // <img> 속성: 첫 주소를 src로, 나머지를 data-fallback("주소|출처" 공백 구분)으로
+  function photoAttrs(g, survey, px) {
+    const [[src, source], ...rest] = photoChain(g, survey, px);
+    return `src="${src}" data-source="${source}" data-fallback="${rest.map(x => x.join('|')).join(' ')}"`;
+  }
+  function setPhoto(img, g, survey, px) {
+    const [[src, source], ...rest] = photoChain(g, survey, px);
+    img.setAttribute('data-fallback', rest.map(x => x.join('|')).join(' '));
+    img.setAttribute('data-source', source);
+    img.src = src;
+  }
+  // 다음 주소로 넘어감. CDS가 응답하지 않는다고 판단했으면 CDS 주소는 건너뜀.
+  // 넘어갈 주소가 없으면 목록 썸네일은 숨김
+  function nextPhoto(img) {
+    let rest = (img.getAttribute('data-fallback') || '').split(' ').filter(Boolean);
+    if (cdsDown) rest = rest.filter(x => !x.includes(CDS_HOST));
+    const [next, ...more] = rest;
+    img.removeAttribute('data-t');
     if (next) {
-      img.removeAttribute('data-fallback');
-      img.src = next;
-    } else if (img.parentNode.classList.contains('card-thumb')) {
-      img.parentNode.classList.add('img-failed');
+      const [url, source] = next.split('|');
+      img.setAttribute('data-fallback', more.join(' '));
+      img.setAttribute('data-source', source);
+      img.src = url;
+    } else {
+      img.setAttribute('data-fallback', '');
+      if (img.parentNode.classList.contains('card-thumb')) img.parentNode.classList.add('img-failed');
     }
+  }
+  // (img의 error·load 이벤트는 버블링되지 않아 capture 단계에서 받음)
+  document.addEventListener('error', e => {
+    if (e.target instanceof HTMLImageElement && e.target.hasAttribute('data-source')) nextPhoto(e.target);
+  }, true);
+  // CDS가 멈추면 오류 없이 접속만 오래 기다리는 경우가 있음 → 화면에 보이는 CDS 사진이
+  // 8초 안에 뜨지 않으면 CDS가 멈춘 것으로 보고, 그 뒤로는 CDS를 건너뛰고 예비 서버로 받음
+  setInterval(() => {
+    const now = Date.now();
+    document.querySelectorAll(`img[data-source][src*="${CDS_HOST}"]`).forEach(img => {
+      if (img.complete) return;
+      if (cdsDown) return nextPhoto(img);
+      const r = img.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight || !r.width) return;   // 화면 밖(아직 안 받는 사진)
+      const t = Number(img.getAttribute('data-t'));
+      if (!t) img.setAttribute('data-t', now);
+      else if (now - t > 8000) { cdsDown = true; nextPhoto(img); }
+    });
+  }, 1000);
+  // 상세 사진이 뜨면 실제로 받은 출처로 사진 설명을 맞춤
+  document.addEventListener('load', e => {
+    const img = e.target;
+    if (!(img instanceof HTMLImageElement) || img.id !== 'detailPhoto') return;
+    const credit = document.getElementById('detailPhotoCredit');
+    const g = GALAXY_BY_NO.get(Number(img.getAttribute('data-no')));
+    if (credit && g) credit.textContent = photoCaption(g, img.getAttribute('data-survey'), img.getAttribute('data-source'));
   }, true);
   // 위키백과·NED·SIMBAD 검색용 이름: "NGC 0010" → "NGC 10", 메시에 은하는 "Messier 31"
   function lookupName(g) {
@@ -545,7 +607,7 @@
     }
     return `<div class="photo-box">
         <figure class="photo-figure">
-          <img id="detailPhoto" ${photoAttrs(g, 'dss', 480)} alt="${escapeHtml(g.primary_id)} 사진" width="480" height="480" decoding="async">
+          <img id="detailPhoto" ${photoAttrs(g, 'dss', 480)} data-no="${g.no}" data-survey="dss" alt="${escapeHtml(g.primary_id)} 사진" width="480" height="480" decoding="async">
           <figcaption>
             <div class="photo-switch" role="group" aria-label="사진 종류">
               ${Object.entries(IMAGE_SURVEYS).map(([k, s]) => `<button class="guide-tab${k === 'dss' ? ' active' : ''}" type="button" data-survey="${k}" data-no="${g.no}">${s.label}</button>`).join('')}
@@ -790,17 +852,14 @@
   detailModal.addEventListener('click', e => { if (e.target === detailModal) closeModal(detailModal); });
   // 상세 창: 사진 종류(DSS2 / 고해상도) 전환
   detailModal.addEventListener('click', e => {
-    const b = e.target.closest('[data-survey]');
+    const b = e.target.closest('button[data-survey]');
     if (!b) return;
     const g = GALAXY_BY_NO.get(Number(b.getAttribute('data-no')));
     const key = b.getAttribute('data-survey');
     const img = document.getElementById('detailPhoto');
-    const backup = backupUrl(g, key, 480);
-    if (backup) img.setAttribute('data-fallback', imageUrl(g, key, 480));
-    else img.removeAttribute('data-fallback');
-    img.src = backup || imageUrl(g, key, 480);
+    img.setAttribute('data-survey', key);
+    setPhoto(img, g, key, 480);
     b.parentNode.querySelectorAll('[data-survey]').forEach(x => x.classList.toggle('active', x === b));
-    document.getElementById('detailPhotoCredit').textContent = photoCaption(g, key);
   });
 
   // ===== 원서(2_Introduction.pdf) 특별 목록: 배지·인물 소개·목록 안내 =====
