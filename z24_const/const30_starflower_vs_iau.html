@@ -98,14 +98,12 @@
 			<tr>
 				<td width="50%">
 					<b>왼쪽 이미지:</b>
-					<label><input type="radio" name="leftType" value="SVG" onchange="updateImages()"> SVG</label>
 					<label><input type="radio" name="leftType" value="PNG" checked onchange="updateImages()"> PNG</label>
 					<label><input type="radio" name="leftType" value="JPG" onchange="updateImages()"> JPG</label>
 					<label><input type="radio" name="leftType" value="IAU" onchange="updateImages()"> IAU</label>
 				</td>
 				<td width="50%">
 					<b>오른쪽 이미지:</b>
-					<label><input type="radio" name="rightType" value="SVG" onchange="updateImages()"> SVG</label>
 					<label><input type="radio" name="rightType" value="PNG" onchange="updateImages()"> PNG</label>
 					<label><input type="radio" name="rightType" value="JPG" checked onchange="updateImages()"> JPG</label>
 					<label><input type="radio" name="rightType" value="IAU" onchange="updateImages()"> IAU</label>
@@ -136,10 +134,7 @@
 			const korName = c_ConstName_HSort[index];
 			const abbrName = c_ConstNameAbbr_HSort[index];
 
-			if (type === 'SVG') {
-				// SVG 파일 경로 (디렉토리나 파일명이 다르다면 수정해 주세요)
-				return `../z90_images/i24_constellation/02.SVG/별바라기_성도_${korName}자리.svg`;
-			} else if (type === 'PNG') {
+			if (type === 'PNG') {
 				return `../z90_images/i24_constellation/01.PNG/별바라기_성도_${korName}자리.png`;
 			} else if (type === 'JPG') {
 				return `../z90_images/i24_constellation/별바라기_성도_${korName}자리.jpg`;
